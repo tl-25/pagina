@@ -2,24 +2,22 @@
    Sistema de diseño — Paleta con variables (FÁCIL DE CAMBIAR)
 ========================================================= */
 :root {
-  /* Base */
-  --bg: #0b1220;
-  --text: #e6eef8;
-  --muted: #a9b3c6;
+  --bg: #f7f8fb;
+  --text: #0b0f17;
+  --muted: #5b6473;
 
-  /* Marca (primaria/acento) */
-  --primary: #14b8a6; /* teal-500 */
-  --accent: #7c3aed; /* violet-600 */
+  --primary: #2563eb; /* azul 600 */
+  --accent: #14b8a6; /* teal 500 */
 
-  /* Superficies */
-  --card: #11182a;
-  --elevated: #0f1626;
-  --border: #243049;
+  --card: #ffffff;
+  --elevated: #ffffff;
+  --border: #e2e8f0;
 
-  /* Estados */
-  --success: #22c55e;
-  --warning: #f59e0b;
-  --danger: #ef4444;
+  --success: #16a34a;
+  --warning: #d97706;
+  --danger: #dc2626;
+
+  --shadow: 0 10px 30px rgba(11, 15, 23, 0.08);
 
   /* Tipografía y radios */
   --ff: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
@@ -56,23 +54,25 @@ body.theme-light-rose {
 }
 
 /* ===== Tema: Light Slate ===== */
-body.theme-light-slate {
-  --bg: #f7f8fb;
-  --text: #0b0f17;
-  --muted: #5b6473;
+html[data-theme="dark"] {
+  /* Base */
+  --bg: #0b1220;
+  --text: #e6eef8;
+  --muted: #a9b3c6;
 
-  --primary: #2563eb; /* azul 600 */
-  --accent: #14b8a6; /* teal 500 */
+  /* Marca (primaria/acento) */
+  --primary: #14b8a6; /* teal-500 */
+  --accent: #7c3aed; /* violet-600 */
 
-  --card: #ffffff;
-  --elevated: #ffffff;
-  --border: #e2e8f0;
+  /* Superficies */
+  --card: #11182a;
+  --elevated: #0f1626;
+  --border: #243049;
 
-  --success: #16a34a;
-  --warning: #d97706;
-  --danger: #dc2626;
-
-  --shadow: 0 10px 30px rgba(11, 15, 23, 0.08);
+  /* Estados */
+  --success: #22c55e;
+  --warning: #f59e0b;
+  --danger: #ef4444;
 }
 
 /* ===== Tema: Light Mint ===== */
@@ -266,11 +266,16 @@ body.has-floating-header {
 }
 
 /* Cambiar el logo por el tema */
-body.theme-light-slate .brand__logo {
+html[data-theme="dark"] .brand__logo {
+  filter: none;
+}
+
+.brand__logo {
   filter: invert(
     100%
   ); /* Al ser monocromatico, se puede usar invert de blanco a negro*/
 }
+
 @media (max-width: 470px) {
   .brand__logo {
     width: 30px;
@@ -394,10 +399,13 @@ body.theme-light-slate .brand__logo {
 .header .nav__list {
   list-style: none;
   margin: 0;
-  padding: 0;
+  padding: 1em;
   display: flex;
   flex-direction: column; /* móvil por defecto */
   gap: 6px;
+}
+.nav__list li button {
+  margin: auto;
 }
 
 /* Enlaces legibles y con touch target */
@@ -717,3 +725,35 @@ body.theme-light-slate .brand__logo {
     grid-template-columns: 1.1fr 0.9fr;
   }
 }
+
+/* ===== Botón toggle ===== */
+.theme-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  margin-left: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid var(--hdr-border);
+  background: transparent;
+  color: var(--hdr-fg);
+  cursor: pointer;
+}
+.theme-toggle .icon-sun,
+.theme-toggle .icon-moon {
+  display: block;
+  fill: currentColor;
+}
+
+html:not([data-theme="dark"]) .theme-toggle .icon-moon {
+  display: none;
+}
+html[data-theme="dark"] .theme-toggle .icon-sun {
+  display: none;
+}
+
+.nav .theme-toggle {
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+} /* empuja a la derecha si no hay otro elemento final */
