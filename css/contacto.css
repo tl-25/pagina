@@ -1,0 +1,302 @@
+/* ======= CONTACTO (coherente con variables y botones existentes) ======= */
+.contact {
+  padding: clamp(48px, 6vw, 80px) 0;
+}
+.contact__head {
+  text-align: center;
+  margin-bottom: 22px;
+}
+.contact__head h2 {
+  font-size: clamp(1.8rem, 3.5vw, 2.4rem);
+}
+.contact__head p {
+  max-width: 60ch;
+  margin: 0.35rem auto 0;
+}
+
+.contact__grid {
+  display: grid;
+  gap: 18px;
+  align-items: start;
+}
+@media (min-width: 980px) {
+  .contact__grid {
+    grid-template-columns: 1.05fr 1fr; /* info | formulario */
+    gap: clamp(18px, 3vw, 28px);
+  }
+}
+
+.contact__info {
+  display: grid;
+  gap: 14px;
+}
+
+/* Tarjeta genérica (glass+shadow) reutilizable */
+.c-card {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--card) 82%, transparent),
+    color-mix(in oklab, var(--elevated) 70%, transparent)
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 25px rgba(0, 0, 0, 0.18),
+    0 30px 60px rgba(0, 0, 0, 0.16);
+  transition: transform 0.18s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease;
+}
+.c-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.22),
+    0 40px 80px rgba(0, 0, 0, 0.2);
+  border-color: color-mix(in oklab, var(--primary) 28%, var(--border));
+}
+.c-card__body {
+  padding: clamp(16px, 3vw, 22px);
+}
+.c-card__icon {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  margin: 14px 0 0 14px;
+  color: var(--text);
+  background: linear-gradient(
+    135deg,
+    color-mix(in oklab, var(--primary) 28%, transparent),
+    color-mix(in oklab, var(--accent) 22%, transparent)
+  );
+  border: 1px solid color-mix(in oklab, var(--border) 60%, transparent);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.18);
+}
+
+.c-link {
+  color: var(--text);
+  border-bottom: 1px dashed color-mix(in oklab, var(--primary) 36%, transparent);
+}
+.c-link:hover {
+  color: var(--primary);
+}
+
+/* Chips de redes */
+.socials {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 6px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.7rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 80%, transparent);
+  font-size: 0.92rem;
+}
+.chip:hover {
+  border-color: color-mix(in oklab, var(--primary) 40%, var(--border));
+}
+
+/* Formulario */
+.contact__form .c-card__body {
+  padding: clamp(18px, 3.2vw, 26px);
+}
+.contact__form h3 {
+  margin: 0 0 0.6rem;
+}
+
+.form__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+  margin: 10px 0 12px;
+}
+@media (min-width: 600px) {
+  .form__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+  .form__grid .field:nth-child(3) {
+    grid-column: span 1;
+  }
+  .form__grid .field:nth-child(4) {
+    grid-column: span 1;
+  }
+}
+.field {
+  display: grid;
+  gap: 6px;
+}
+label {
+  font-weight: 600;
+}
+input,
+textarea {
+  width: 100%;
+  padding: 0.85rem 0.9rem;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 85%, transparent);
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s, background 0.2s;
+}
+input::placeholder,
+textarea::placeholder {
+  color: color-mix(in oklab, var(--muted) 70%, var(--text));
+}
+input:focus,
+textarea:focus {
+  border-color: color-mix(in oklab, var(--primary) 45%, var(--border));
+  box-shadow: 0 0 0 4px color-mix(in oklab, var(--primary) 18%, transparent);
+}
+textarea {
+  resize: vertical;
+  min-height: 140px;
+}
+
+.chk {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  user-select: none;
+}
+.chk input {
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  accent-color: var(--primary);
+}
+
+.error {
+  color: #dc2626;
+  min-height: 1em;
+}
+.is-invalid {
+  border-color: #dc2626 !important;
+  box-shadow: 0 0 0 4px color-mix(in oklab, #dc2626 25%, transparent) !important;
+}
+
+.form__actions {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  flex-wrap: wrap;
+  margin-top: 8px;
+}
+.form__status {
+  color: var(--muted);
+}
+
+/* Animación “reveal-up” (respeta reduced motion) */
+.reveal-up {
+  opacity: 0;
+  transform: translateY(14px);
+}
+.reveal-up.is-visible {
+  opacity: 1;
+  transform: none;
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal-up {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+/* ===== Contact Title Animation — conflict-proof ===== */
+
+/* El H2 solo administra layout; sin transforms propios */
+#contacto .title-animated,
+.title-animated {
+  display: block;
+  position: relative;
+  line-height: 1.1;
+  /* evita que otra regla global de h2 le meta transform/opacity */
+  transform: none !important;
+  opacity: 1 !important;
+}
+
+/* El efecto vive en el span interno */
+.title-ink {
+  position: relative;
+  display: inline-block;
+  will-change: transform, opacity;
+}
+
+/* subrayado que se dibuja */
+.title-ink::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 3px;
+  border-radius: 999px;
+  /* fallback sin color-mix */
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  /* sombra sutil */
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transform-origin: left center;
+  transform: scaleX(0);
+}
+
+/* estado inicial: “rise” sutil */
+.title-ink {
+  opacity: 0;
+  transform: translateY(10px);
+  letter-spacing: 0.4px;
+}
+
+/* cuando se activa la animación */
+.title-animated.is-playing .title-ink {
+  animation: tRise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+}
+.title-animated.is-playing .title-ink::after {
+  animation: tUnderline 0.75s 0.15s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+    tSheen 2.2s 0.2s ease-out 1;
+  background-size: 200% 100%;
+}
+.title-animated.is-playing .title-ink::before {
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
+  transform: translateX(120%) rotate(6deg);
+  opacity: 0.75;
+}
+
+/* keyframes */
+@keyframes tRise {
+  to {
+    opacity: 1;
+    transform: none;
+    letter-spacing: 0;
+  }
+}
+@keyframes tUnderline {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes tSheen {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+/* reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .title-ink,
+  .title-ink::before,
+  .title-ink::after {
+    animation: none !important;
+    transition: none !important;
+    transform: none !important;
+    opacity: 1 !important;
+    background-position: 0 0 !important;
+  }
+}

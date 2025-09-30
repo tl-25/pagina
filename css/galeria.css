@@ -1,0 +1,462 @@
+/* ===================== GALERÍA DE VIDEOS — LAYOUT BASE ===================== */
+.vids {
+  padding: 0 1em 3em 1em;
+}
+.vids__head {
+  text-align: center;
+  margin-bottom: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1em;
+}
+
+/* === Animación del título de la galería de videos ===========================
+   - Sube con fade
+   - Trazo degradado que se “dibuja” debajo
+   - Sheen diagonal sutil que cruza el texto
+   Usa tus variables: --primary, --accent, --text
+============================================================================= */
+
+.vids__title {
+  position: relative;
+  display: inline-block;
+  line-height: 1.1;
+  /* Estado inicial */
+  opacity: 0;
+  font-size: 3em;
+  width: fit-content;
+  transform: translateY(10px);
+  letter-spacing: 0.4px;
+  /* Animación principal */
+  animation: vidsTitleIn 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) 0.05s forwards;
+  will-change: transform, opacity;
+}
+
+/* Subrayado degradado que se “dibuja” */
+.vids__title::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: -8px;
+  height: 3px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  transform-origin: left center;
+  transform: scaleX(0);
+  /* animación del trazo */
+  animation: vidsUnderline 0.75s 0.18s cubic-bezier(0.2, 0.8, 0.2, 1) forwards,
+    vidsSheen 2.2s 0.25s ease-out 1;
+  background-size: 200% 100%;
+}
+
+/* Keyframes */
+@keyframes vidsTitleIn {
+  to {
+    opacity: 1;
+    transform: none;
+    letter-spacing: 0;
+  }
+}
+@keyframes vidsUnderline {
+  to {
+    transform: scaleX(1);
+  }
+}
+@keyframes vidsSheen {
+  from {
+    background-position: 0% 50%;
+  }
+  to {
+    background-position: 200% 50%;
+  }
+}
+
+.vids__subtitle {
+  margin: 0 auto 10px;
+  max-width: 62ch;
+  color: var(--muted);
+  font-size: 1.5em;
+}
+
+@media (max-width: 420px) {
+  .vids__title {
+    font-size: 2em;
+  }
+  .vids__subtitle {
+    font-size: 1.2em;
+  }
+}
+
+/* Filtros */
+.vids__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+  margin-top: 6px;
+}
+.chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.45rem 0.8rem;
+  border-radius: 999px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 80%, transparent);
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: var(--text);
+}
+.chip:hover {
+  border-color: color-mix(in oklab, var(--primary) 40%, var(--border));
+}
+.chip.is-active {
+  background: color-mix(in oklab, var(--primary) 18%, transparent);
+  border-color: color-mix(in oklab, var(--primary) 30%, var(--border));
+}
+
+/* Grid */
+.vids__grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 14px;
+}
+@media (min-width: 720px) {
+  .vids__grid {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+@media (min-width: 1120px) {
+  .vids__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* Tarjeta video */
+.vcard {
+  background: linear-gradient(
+    180deg,
+    color-mix(in oklab, var(--card) 82%, transparent),
+    color-mix(in oklab, var(--elevated) 70%, transparent)
+  );
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 25px rgba(0, 0, 0, 0.18),
+    0 30px 60px rgba(0, 0, 0, 0.16);
+  overflow: hidden;
+  transition: transform 0.18s ease, box-shadow 0.25s ease,
+    border-color 0.25s ease, opacity 0.2s ease;
+}
+.vcard[hidden] {
+  display: none !important;
+}
+.vcard.is-hiding {
+  opacity: 0.2;
+  transform: scale(0.98);
+}
+
+.vcard:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.22),
+    0 40px 80px rgba(0, 0, 0, 0.2);
+  border-color: color-mix(in oklab, var(--primary) 28%, var(--border));
+}
+.vcard__btn {
+  appearance: none;
+  border: 0;
+  background: transparent;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  padding: 0;
+  display: grid;
+  gap: 0;
+}
+
+/* Thumb + efectos */
+.vthumb {
+  position: relative;
+  margin: 0;
+  aspect-ratio: 16/9;
+  width: 100%;
+  overflow: hidden;
+  isolation: isolate;
+  background: #000;
+}
+.vthumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.02);
+  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
+}
+.vcard:hover .vthumb img {
+  transform: scale(1.06);
+  filter: saturation(1.05) contrast(1.02);
+}
+.vthumb::after {
+  content: "";
+  position: absolute;
+  inset: -25% -60% -25% -60%;
+  background: linear-gradient(
+    115deg,
+    color-mix(in oklab, #fff 22%, transparent) 0%,
+    color-mix(in oklab, #fff 0%, transparent) 45%,
+    color-mix(in oklab, #fff 22%, transparent) 55%,
+    transparent 100%
+  );
+  transform: translateX(-30%) rotate(12deg);
+  opacity: 0;
+  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
+  pointer-events: none;
+  z-index: 1;
+}
+.vcard:hover .vthumb::after {
+  transform: translateX(60%) rotate(12deg);
+  opacity: 0.55;
+}
+
+/* Play */
+.vplay {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 68px;
+  height: 68px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.8);
+  display: grid;
+  place-items: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.25);
+}
+.vplay::before {
+  content: "";
+  width: 0;
+  height: 0;
+  border-left: 18px solid var(--primary);
+  border-top: 12px solid transparent;
+  border-bottom: 12px solid transparent;
+  margin-left: 4px;
+}
+.vplay::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 999px;
+  box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 35%, transparent);
+  animation: vPulse 2.2s ease-out infinite;
+}
+@keyframes vPulse {
+  0% {
+    box-shadow: 0 0 0 0 color-mix(in oklab, var(--primary) 35%, transparent);
+    opacity: 0.9;
+  }
+  100% {
+    box-shadow: 0 0 0 22px rgba(0, 0, 0, 0);
+    opacity: 0;
+  }
+}
+
+/* Meta */
+.vmeta {
+  padding: 12px 12px 14px;
+  display: grid;
+  gap: 6px;
+}
+.vmeta__title {
+  margin: 0;
+  font-size: 1.02rem;
+  color: var(--text);
+}
+.vmeta__tag {
+  display: inline-block;
+  font-size: 0.88rem;
+  color: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 0.2rem 0.6rem;
+  background: color-mix(in oklab, var(--card) 85%, transparent);
+}
+
+/* ===================== LIGHTBOX — FIX DESKTOP/MÓVIL ===================== */
+.vlightbox[hidden] {
+  display: none;
+}
+.vlightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 1200;
+}
+.vlightbox__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  backdrop-filter: blur(3px);
+}
+
+/* Diálogo centrado en escritorio, full-screen en móvil */
+.vlightbox__dialog {
+  --lb-header-h: 52px;
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  display: grid;
+  grid-template-rows: var(--lb-header-h) 1fr;
+  width: clamp(320px, 90vw, 1280px); /* ancho adaptable */
+  height: clamp(260px, 80vh, 900px); /* alto adaptable */
+  border-radius: calc(var(--radius) + 4px);
+  background: color-mix(in oklab, var(--bg) 86%, transparent);
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35), 0 40px 90px rgba(0, 0, 0, 0.32);
+  overflow: hidden;
+}
+
+/* Header separado del stage para no tapar controles nativos */
+.vlightbox__header {
+  height: var(--lb-header-h);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 12px;
+  gap: 8px;
+  border-bottom: 1px solid var(--border);
+  z-index: 1;
+  background: transparent;
+}
+.vlightbox__title {
+  margin: 0;
+  font-size: 1rem;
+  text-align: center;
+}
+
+/* Botón cerrar */
+.vlightbox__close {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 85%, transparent);
+  color: var(--text);
+  font-size: 20px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 2;
+}
+.vlightbox__close:hover {
+  background: color-mix(in oklab, var(--card) 92%, transparent);
+}
+
+/* Escenario ocupa TODO el espacio restante; el player se “contiene” */
+.vlightbox__stage {
+  position: relative;
+  z-index: 0;
+  pointer-events: auto;
+  margin: 8px;
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: #000;
+  /* El alto se adapta al contenedor, no al ratio: el player hará letterbox con contain */
+}
+.vlightbox__stage iframe,
+.vlightbox__stage video {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  display: block;
+  object-fit: contain; /* muestra el video completo y deja franjas si hace falta */
+}
+
+/* Navegación flotante lateral: centrada verticalmente y fuera del área de controles nativos */
+.vlightbox__nav {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 12px;
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 90%, transparent);
+  color: var(--text);
+  font-size: 22px;
+  line-height: 1;
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  z-index: 99;
+}
+.vlightbox__nav:hover {
+  background: color-mix(in oklab, var(--card) 95%, transparent);
+}
+.vprev {
+  left: max(env(safe-area-inset-left), 10px);
+}
+.vnext {
+  right: max(env(safe-area-inset-right), 10px);
+}
+
+/* ===== MÓVIL: full-screen, controles laterales más grandes y offset de header ===== */
+@media (max-width: 599px) {
+  .vlightbox__dialog {
+    --lb-header-h: 48px;
+    width: 100vw;
+    height: 100vh;
+    border-radius: 0;
+  }
+  .vlightbox__stage {
+    margin: 0;
+    border-radius: 0;
+  }
+
+  /* Tamaño/gap configurables */
+  .vlightbox__nav {
+    --btn-size: 52px;
+    --nav-gap: 16px;
+
+    position: fixed; /* relativo al viewport */
+    z-index: 1001;
+    width: var(--btn-size);
+    height: var(--btn-size);
+    font-size: 24px;
+
+    /* Centrado vertical en la parte inferior con safe-area y margen respirado
+       (lo suficientemente arriba para no pisar los controles del player) */
+    bottom: 10%;
+
+    /* Base: ubicar en el centro horizontal */
+    left: 50%;
+    top: auto !important;
+    transform: translateX(-50%); /* se sobreescribe en .vprev/.vnext abajo */
+    border-radius: 12px;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.28);
+    background: color-mix(in oklab, var(--card) 92%, transparent);
+    border: 1px solid var(--border);
+  }
+
+  /* Botón anterior: a la izquierda del centro, separado por var(--nav-gap)/2 */
+  .vlightbox__nav.vprev {
+    transform: translateX(calc(-100% - var(--nav-gap) / 2));
+  }
+
+  /* Botón siguiente: a la derecha del centro, separado por var(--nav-gap)/2 */
+  .vlightbox__nav.vnext {
+    transform: translateX(calc(0% + var(--nav-gap) / 2));
+  }
+}
+
+/* Reduce motion */
+@media (prefers-reduced-motion: reduce) {
+  .vthumb::after,
+  .vplay::after {
+    animation: none !important;
+    transition: none !important;
+  }
+}

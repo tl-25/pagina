@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Sobre nosotros | Development</title>
+    <meta
+      name="description"
+      content="Plantilla responsive moderna con header fijo animado y paleta de colores personalizable."
+    />
+    <link rel="icon" href="assets/imagenes/logo_icon.png" sizes="any" />
+
+    <link rel="stylesheet" href="app.css" as="style" />
+    <link rel="stylesheet" href="css/nosotros.css" />
+  </head>
+  <body class="has-floating-header theme-light-slate">
+    <!-- =========================================
+       Header fijo con animación y navegación
+  ========================================== -->
+    <header
+      id="header"
+      class="header"
+      role="banner"
+      aria-label="Encabezado principal"
+    >
+      <div class="container header__inner">
+        <a
+          href="inicio.html"
+          class="brand"
+          aria-label="Agencia Ficticia, ir al inicio"
+        >
+          <img
+            class="brand__logo"
+            id="brandLogo"
+            src="assets/imagenes/logo_white.png"
+            width="50px"
+            height="auto"
+          />
+          <span class="brand__text">Nuvidex</span>
+        </a>
+
+        <!-- Botón hamburguesa para móviles -->
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+        </button>
+
+        <!-- Navegación -->
+        <nav
+          id="nav"
+          class="nav"
+          role="navigation"
+          aria-label="Navegación principal"
+        >
+          <ul class="nav__list">
+            <li><a class="nav__link" href="inicio.html#inicio">Inicio</a></li>
+            <li>
+              <a class="nav__link" href="inicio.html#ventajas">Ventajas</a>
+            </li>
+            <li>
+              <a class="nav__link" href="inicio.html#servicios">Servicios</a>
+            </li>
+            <li>
+              <a class="nav__link" href="inicio.html#portafolio">Portafolio</a>
+            </li>
+            <li>
+              <a class="nav__link" href="inicio.html#testimonios"
+                >Testimonios</a
+              >
+            </li>
+            <li><a class="nav__link" href="inicio.html#precios">Precios</a></li>
+            <li><a class="nav__link" href="inicio.html#faq">FAQ</a></li>
+            <li>
+              <a class="nav__link" href="contacto.html">Contacto</a>
+            </li>
+            <li>
+              <a
+                class="nav__link btn btn--primary is-active"
+                href="nosotros.html"
+                >Nosotros</a
+              >
+            </li>
+            <li>
+              <a class="nav__link" href="galeria.html">Galeria</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- =========================================
+       Hero / Inicio
+  ========================================== -->
+    <main class="hero hero--diagonal" tabindex="-1">
+      <div class="hero-diagonal__bg" aria-hidden="true"></div>
+      <div class="container about__hero">
+        <div class="about__copy reveal-up">
+          <h2 class="about__title">Diseñamos productos útiles y bonitos</h2>
+          <p>
+            Somos un equipo multidisciplinario centrado en resolver problemas
+            reales con diseño y tecnología. Apostamos por la accesibilidad, el
+            rendimiento y una estética que dure en el tiempo.
+          </p>
+          <div class="about__actions">
+            <a class="btn btn--primary" href="#contacto">Trabajemos juntos</a>
+            <a class="btn" href="#portafolio">Ver portafolio</a>
+          </div>
+        </div>
+
+        <figure
+          class="about__media fx-float3d reveal-up"
+          aria-label="Equipo trabajando"
+        >
+          <img
+            src="https://images.unsplash.com/photo-1553877522-43269d4ea984?q=80&w=1600&auto=format&fit=crop"
+            alt="Equipo colaborando en un mural de ideas"
+            loading="lazy"
+            decoding="async"
+          />
+        </figure>
+      </div>
+    </main>
+
+    <section id="sobre" class="about section">
+      <!-- Valores -->
+      <div class="container about__values">
+        <article class="vcard c-card reveal-up">
+          <div class="vcard__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path
+                d="M12 2 2 7l10 5 10-5-10-5Zm0 7L2 4v13l10 5 10-5V4l-10 5Z"
+              />
+            </svg>
+          </div>
+          <h3>Simple primero</h3>
+          <p>
+            Reducimos complejidad para que el usuario logre su objetivo sin
+            fricción.
+          </p>
+        </article>
+        <article class="vcard c-card reveal-up">
+          <div class="vcard__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path
+                d="M12 2a10 10 0 1 0 10 10A10.011 10.011 0 0 0 12 2Zm1 15h-2v-2h2Zm0-4h-2V7h2Z"
+              />
+            </svg>
+          </div>
+          <h3>Accesible por defecto</h3>
+          <p>
+            Contraste, navegación por teclado y ARIA: no son extras, son base.
+          </p>
+        </article>
+        <article class="vcard c-card reveal-up">
+          <div class="vcard__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path d="M12 3 2 12h3v8h6v-6h2v6h6v-8h3Z" />
+            </svg>
+          </div>
+          <h3>Rendimiento real</h3>
+          <p>
+            Medimos y optimizamos: CLS, LCP y TBT como indicadores continuos.
+          </p>
+        </article>
+        <article class="vcard c-card reveal-up">
+          <div class="vcard__icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" width="22" height="22" fill="currentColor">
+              <path
+                d="m12 17 5 3-1.9-5.9L20 10l-6-.4L12 4l-2 5.6-6 .4 4.9 3.9L7 20Z"
+              />
+            </svg>
+          </div>
+          <h3>Detalles que suman</h3>
+          <p>
+            Microinteracciones y pulido visual que mejoran la percepción de
+            calidad.
+          </p>
+        </article>
+      </div>
+
+      <!-- Cifras -->
+      <div
+        class="container about__stats c-card reveal-up"
+        aria-label="Métricas"
+      >
+        <div class="stat">
+          <span class="stat__num" data-target="7">0</span>
+          <span class="stat__label">años</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-target="140">0</span>
+          <span class="stat__label">proyectos</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-target="72">0</span>
+          <span class="stat__label">NPS</span>
+        </div>
+        <div class="stat">
+          <span class="stat__num" data-target="12">0</span>
+          <span class="stat__label">países</span>
+        </div>
+      </div>
+
+      <!-- Historia / Timeline -->
+      <div class="container about__timeline">
+        <h3 class="reveal-up">Nuestra historia</h3>
+        <ol class="timeline c-card reveal-up">
+          <div class="timeline__bar" aria-hidden="true"></div>
+          <li class="timeline__item">
+            <time>2019</time>
+            <h4>Nace el estudio</h4>
+            <p>Arrancamos con proyectos pequeños para startups locales.</p>
+          </li>
+          <li class="timeline__item">
+            <time>2021</time>
+            <h4>Crecimiento</h4>
+            <p>Equipo de 8 personas y primeros clientes internacionales.</p>
+          </li>
+          <li class="timeline__item">
+            <time>2023</time>
+            <h4>Madurez</h4>
+            <p>Servicios de estrategia, investigación y diseño de servicio.</p>
+          </li>
+          <li class="timeline__item">
+            <time>2025</time>
+            <h4>Hoy</h4>
+            <p>
+              Colaboramos con marcas globales. Enfoque en impacto y calidad.
+            </p>
+          </li>
+        </ol>
+      </div>
+
+      <!-- Equipo -->
+      <div class="container about__team">
+        <h3 class="reveal-up">Equipo</h3>
+        <div class="team__grid">
+          <article class="t c-card reveal-up">
+            <figure class="t__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?q=80&w=500&auto=format&fit=crop"
+                alt="Retrato Ana"
+              />
+            </figure>
+            <div class="t__body">
+              <strong class="t__name">Ana Paredes</strong>
+              <span class="t__role">UX Lead</span>
+            </div>
+          </article>
+          <article class="t c-card reveal-up">
+            <figure class="t__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1547425260-76bcadfb4f2c?q=80&w=500&auto=format&fit=crop"
+                alt="Retrato Luis"
+              />
+            </figure>
+            <div class="t__body">
+              <strong class="t__name">Luis Romero</strong>
+              <span class="t__role">Frontend Senior</span>
+            </div>
+          </article>
+
+          <article class="t c-card reveal-up">
+            <figure class="t__avatar">
+              <img
+                src="https://images.unsplash.com/photo-1527980965255-d3b416303d12?q=80&w=500&auto=format&fit=crop"
+                alt="Retrato Diego"
+              />
+            </figure>
+            <div class="t__body">
+              <strong class="t__name">Diego Ortega</strong>
+              <span class="t__role">Brand / Motion</span>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       Footer
+  ========================================== -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>
+          © <span id="year"></span> Agencia Ficticia. Todos los derechos
+          reservados.
+        </p>
+        <nav aria-label="Enlaces secundarios">
+          <a href="#" aria-label="Política de privacidad">Privacidad</a>
+          <a href="#" aria-label="Términos y condiciones">Términos</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Botón volver arriba -->
+    <button id="toTop" class="to-top" aria-label="Volver arriba">↑</button>
+
+    <!-- Mensaje sin JS -->
+    <noscript>
+      <div class="no-js">
+        Este sitio funciona mejor con JavaScript habilitado.
+      </div>
+    </noscript>
+
+    <script src="app.js" defer></script>
+    <script src="js/nosotros.js" defer></script>
+  </body>
+</html>

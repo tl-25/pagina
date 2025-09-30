@@ -1,0 +1,743 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Inicio | Nuvidex</title>
+    <meta
+      name="description"
+      content="Plantilla responsive moderna con header fijo animado y paleta de colores personalizable."
+    />
+    <link rel="icon" href="assets/imagenes/logo_icon.png" sizes="any" />
+    <link rel="stylesheet" href="app.css" />
+    <link rel="stylesheet" href="css/inicio.css" />
+  </head>
+  <body class="has-floating-header theme-light-slate">
+    <!-- =========================================
+       Header fijo con animación y navegación
+  ========================================== -->
+    <header
+      id="header"
+      class="header"
+      role="banner"
+      aria-label="Encabezado principal"
+    >
+      <div class="container header__inner">
+        <a
+          href="inicio.html"
+          class="brand"
+          aria-label="Agencia Ficticia, ir al inicio"
+        >
+          <!-- <span class="brand__logo" aria-hidden="true">◎</span> -->
+          <img
+            id="brandLogo"
+            class="brand__logo"
+            src="assets/imagenes/logo_white.png"
+            width="50px"
+            height="auto"
+          />
+          <span class="brand__text">Nuvidex</span>
+        </a>
+
+        <!-- Botón hamburguesa para móviles -->
+        <button
+          class="nav__toggle"
+          id="navToggle"
+          aria-controls="nav"
+          aria-expanded="false"
+          aria-label="Abrir menú"
+        >
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+          <span class="nav__toggle-bar"></span>
+        </button>
+
+        <!-- Navegación -->
+        <nav
+          id="nav"
+          class="nav"
+          role="navigation"
+          aria-label="Navegación principal"
+        >
+          <ul class="nav__list">
+            <li><a class="nav__link" href="#inicio">Inicio</a></li>
+            <li><a class="nav__link" href="#ventajas">Ventajas</a></li>
+            <li><a class="nav__link" href="#servicios">Servicios</a></li>
+            <li><a class="nav__link" href="#portafolio">Portafolio</a></li>
+            <li><a class="nav__link" href="#testimonios">Testimonios</a></li>
+            <li><a class="nav__link" href="#precios">Precios</a></li>
+            <li><a class="nav__link" href="#faq">FAQ</a></li>
+            <li>
+              <a class="nav__link btn btn--primary" href="contacto.html"
+                >Contacto</a
+              >
+            </li>
+            <li>
+              <a class="nav__link btn btn--secondary" href="nosotros.html"
+                >Nosotros</a
+              >
+            </li>
+            <li>
+              <a class="nav__link" href="galeria.html">Galeria</a>
+            </li>
+          </ul>
+        </nav>
+      </div>
+    </header>
+
+    <!-- =========================================
+       Hero / Inicio
+  ========================================== -->
+    <main id="inicio" class="hero hero--diagonal" tabindex="-1">
+      <div class="hero-diagonal__bg" aria-hidden="true"></div>
+      <div class="container hero-diagonal__grid">
+        <section>
+          <h1>Nuvidex</h1>
+          <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dignissimos
+            ducimus consectetur laborum voluptatum magnam obcaecati cupiditate
+            inventore pariatur aliquam. Illo asperiores beatae, at unde aperiam
+            nostrum ut sit odio quidem!
+          </p>
+          <div class="hero__actions">
+            <a class="btn btn--primary" href="#servicios">Ver servicios</a>
+            <a class="btn btn--ghost" href="#portafolio">Explorar</a>
+          </div>
+        </section>
+        <aside aria-hidden="true">
+          <div class="glass-card">
+            <h3>Resumen del proyecto</h3>
+            <p>
+              Landing + blog + e-commerce básico. Integraciones y auditoría de
+              performance.
+            </p>
+          </div>
+        </aside>
+      </div>
+    </main>
+
+    <!-- =========================================
+       Ventajas (features)
+  ========================================== -->
+    <section id="ventajas" class="section">
+      <div class="container">
+        <header class="section__head">
+          <h2>Ventajas competitivas</h2>
+          <p>
+            Arquitectura ligera, escalable y amigable con SEO, traducida en
+            resultados reales.
+          </p>
+        </header>
+
+        <div class="grid cards">
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🚀</div>
+            <h3>Rendimiento</h3>
+            <p>Carga inicial optimizada, imágenes adaptativas y CSS crítico.</p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">♿</div>
+            <h3>Accesibilidad</h3>
+            <p>Colores con contraste, navegación por teclado y roles ARIA.</p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🛠️</div>
+            <h3>Mantenible</h3>
+            <p>
+              Estructura modular y comentarios para facilitar el trabajo en
+              equipo.
+            </p>
+          </article>
+
+          <article class="card">
+            <div class="card__icon" aria-hidden="true">🎯</div>
+            <h3>Enfoque UX</h3>
+            <p>Jerarquías claras, microcopys y feedback inmediato.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       Carousel
+  ========================================== -->
+    <section id="hscroll" class="hscroll">
+      <div
+        class="hscroll__sticky"
+        aria-roledescription="carrusel"
+        aria-label="Galería horizontal"
+      >
+        <div class="hscroll__track" id="hTrack">
+          <!-- Mapping industrial descripción -->
+          <article
+            class="panel gcard gcard--glass"
+            role="group"
+            aria-roledescription="slide"
+          >
+            <div class="gcard__inner">
+              <!-- Texto (izquierda) -->
+              <div class="gcard__text">
+                <h3 class="gcard__title text-gradient-anim">
+                  Mapping industrial
+                </h3>
+                <span class="badge"
+                  >✨ La innovación que eleva la productividad de la industria
+                  ✨
+                </span>
+                <p class="gcard__desc">
+                  En Nuvidex transformamos el proceso de ensamble con sistemas
+                  de proyección inteligentes. Nuestro sistema guía al operador
+                  en cada paso, proyectando instrucciones directamente sobre la
+                  estación de trabajo y validando el resultado en tiempo real
+                </p>
+                <!-- <div class="gcard__actions">
+                  <a class="btn btn--primary" href="#portafolio">Ver más</a>
+                  <a class="btn btn--ghost" href="#servicios">Servicios</a>
+                </div> -->
+              </div>
+              <figure class="gcard__media_media fx-tilt3d">
+                <img
+                  src="assets/imagenes/mapping/nuvi4.JPEG"
+                  alt="Vista de un dashboard moderno"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </figure>
+            </div>
+          </article>
+          <!-- mapping industrial carousel -->
+          <article
+            class="panel gcard gcard--glass"
+            role="group"
+            aria-roledescription="slide"
+          >
+            <div class="gcard__inner">
+              <!-- Texto (izquierda) -->
+              <div class="gcard__text">
+                <h3 class="gcard__title text-gradient-anim">
+                  Con esta tecnología, garantizamos precisión, velocidad y
+                  confiabilidad en cada operación.
+                </h3>
+                <ul class="list-check">
+                  <li>Integraciones avanzadas</li>
+                  <li>Soporte prioritario</li>
+                  <li>Entrenamiento del equipo</li>
+                </ul>
+              </div>
+              <ul class="collage" role="list">
+                <li class="foto--left">
+                  <img
+                    src="assets/imagenes/mapping/nuvi1.JPEG"
+                    alt="Descripción 1"
+                    loading="lazy"
+                    decoding="async"
+                    width="200px"
+                    height="auto"
+                  />
+                </li>
+                <li class="foto--center">
+                  <img
+                    src="assets/imagenes/mapping/nuvi2.JPEG"
+                    alt="Descripción 2"
+                    loading="lazy"
+                    decoding="async"
+                    width="200px"
+                    height="auto"
+                  />
+                </li>
+                <li class="foto--right">
+                  <img
+                    src="assets/imagenes/mapping/nuvi3.JPEG"
+                    alt="Descripción 3"
+                    loading="lazy"
+                    decoding="async"
+                    width="200px"
+                    height="auto"
+                  />
+                </li>
+              </ul>
+            </div>
+          </article>
+          <!-- Mapping interactivo descripción -->
+          <article
+            class="panel gcard gcard--glass"
+            role="group"
+            aria-roledescription="slide"
+          >
+            <div class="gcard__inner">
+              <!-- Texto (izquierda) -->
+              <div class="gcard__text">
+                <h3 class="gcard__title text-gradient-anim">
+                  Mapping interactivo
+                </h3>
+                <span class="badge"
+                  >✨ La innovación también se puede tocar 👆</span
+                >
+                <p class="gcard__desc">
+                  Nuestro sistema interactivo responde a tu movimiento: no solo
+                  ves la tecnología, también la sientes. Cada gesto activa la
+                  experiencia, guiando acciones con precisión y fluidez. Es
+                  intuitivo, cercano y funcional: convierte cada interacción en
+                  una respuesta clara, inmediata y útil.
+                </p>
+                <!-- <div class="gcard__actions">
+                  <a class="btn btn--primary" href="#portafolio">Ver más</a>
+                  <a class="btn btn--ghost" href="#servicios">Servicios</a>
+                </div> -->
+              </div>
+              <figure class="media__video">
+                <video
+                  src="assets/videos/mappinginteractivo.mp4"
+                  width="100px"
+                  autoplay
+                  muted
+                  playisinline
+                  loop
+                  preload="auto"
+                ></video>
+              </figure>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       Servicios
+  ========================================== -->
+    <section id="servicios" class="section section--alt">
+      <div class="container">
+        <header class="section__head">
+          <h2>Servicios</h2>
+          <p>
+            Ofrecemos soluciones de software por medio de nuestras plataformas
+          </p>
+        </header>
+
+        <div class="grid services">
+          <!-- Plataforma proyectos -->
+          <article class="service">
+            <div class="service__title"><h3>Plataforma de proyectos</h3></div>
+            <div class="service__detail">
+              <div>
+                <img
+                  src="assets/imagenes/plataformas/plataforma_proyectos.png"
+                  width="200px"
+                  height="auto"
+                />
+              </div>
+              <h4>Organice, priorice y avance con claridad</h4>
+              <p>
+                Centralice la planeación de sus proyectos con tareas y subtareas
+                que facilitan el seguimiento diario. Visualice el estado real
+                del trabajo, anticipe cuellos de botella y mantenga a su equipo
+                alineado con objetivos y plazos.
+              </p>
+            </div>
+          </article>
+          <!-- Plataforma trabajadores -->
+          <article class="service">
+            <div class="service__title">
+              <h3>Plataforma de trabajadores</h3>
+            </div>
+            <div class="service__detail">
+              <div>
+                <img
+                  src="assets/imagenes/plataformas/plataforma_trabajadores.png"
+                  width="200px"
+                  height="auto"
+                />
+              </div>
+              <h4>Productividad del equipo, proyecto por proyecto.</h4>
+              <p>
+                Asigne actividades por proyecto, divídalas en subtareas y
+                supervise el progreso de cada colaborador con transparencia.
+                Equilibre cargas de trabajo y tome decisiones informadas para
+                cumplir objetivos sin contratiempos.
+              </p>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service__title">
+              <h3>Plataforma de gestión de producción</h3>
+            </div>
+            <div class="service__detail">
+              <div>
+                <img
+                  src="assets/imagenes/plataformas/plataforma_gestion_produccion.png"
+                  width="200px"
+                  height="auto"
+                />
+              </div>
+              <h4>Rendimiento de planta a simple vista</h4>
+              <p>
+                Monitoree en tiempo real la cantidad de piezas producidas por
+                máquina. Identifique paros, variaciones y metas cumplidas para
+                ajustar a tiempo y asegurar la continuidad operativa.
+              </p>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service__title">
+              <h3>Plataforma de mapping</h3>
+            </div>
+            <div class="service__detail">
+              <div>
+                <img
+                  src="assets/imagenes/plataformas/plataforma_mapping.png"
+                  width="200px"
+                  height="auto"
+                />
+              </div>
+              <h4>Espacios y procesos explicados de forma visual</h4>
+              <p>
+                Estandarice y agilice sus procesos de ensamblaje mediante
+                instrucciones proyectadas directamente sobre el área de trabajo.
+                La interfaz interactiva guía paso a paso, resalta piezas y
+                secuencias, y verifica cada avance para reducir error y tiempos
+                de capacitación.
+              </p>
+            </div>
+          </article>
+          <article class="service">
+            <div class="service__title"><h3>Plataforma checador</h3></div>
+            <div class="service__detail">
+              <div>
+                <img
+                  src="assets/imagenes/plataformas/plataforma_checador.png"
+                  width="200px"
+                  height="auto"
+                />
+              </div>
+              <h4>Control de asistencia confiable y transparente</h4>
+              <p>
+                Registre entradas, salidas, tiempos de comida y horas extra con
+                precisión. Obtenga reportes claros para nómina y administración,
+                reduciendo errores y asegurando cumplimiento interno.
+              </p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       Portafolio (grid de tarjetas)
+  ========================================== -->
+    <section id="portafolio" class="section">
+      <div class="container">
+        <header class="section__head">
+          <h2>Portafolio</h2>
+          <p>Algunos ejemplos ficticios para inspirarte.</p>
+        </header>
+
+        <div class="grid gallery">
+          <!-- Tarjetas con placeholders -->
+          <figure class="shot">
+            <div
+              class="shot__img"
+              role="img"
+              aria-label="Sitio Moda Minimalista"
+            ></div>
+            <figcaption>
+              <h3>Moda Minimalista</h3>
+              <p>Ecommerce limpio con foco en fotografía.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="shot">
+            <div
+              class="shot__img"
+              role="img"
+              aria-label="Dashboard Analítico"
+            ></div>
+            <figcaption>
+              <h3>Dashboard Analítico</h3>
+              <p>Visualizaciones reactivas y accesibles.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="shot">
+            <div
+              class="shot__img"
+              role="img"
+              aria-label="App de Reservas"
+            ></div>
+            <figcaption>
+              <h3>App de Reservas</h3>
+              <p>Flujos simples con confirmaciones claras.</p>
+            </figcaption>
+          </figure>
+
+          <figure class="shot">
+            <div class="shot__img" role="img" aria-label="Blog Editorial"></div>
+            <figcaption>
+              <h3>Blog Editorial</h3>
+              <p>Tipografía legible y experiencias de lectura.</p>
+            </figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       Testimonios (slider simple sin libs)
+  ========================================== -->
+    <section id="testimonios" class="section section--alt">
+      <div class="container">
+        <header class="section__head">
+          <h2>Testimonios</h2>
+          <p>Opiniones ficticias de clientes felices.</p>
+        </header>
+
+        <div class="testimonial" aria-roledescription="carrusel">
+          <button class="testimonial__nav prev" aria-label="Anterior">‹</button>
+          <div class="testimonial__track" id="testimonialTrack">
+            <blockquote class="testimonial__item tcard">
+              <div class="tcard__inner">
+                <div class="tcard__head">
+                  <figure class="tcard__avatar" aria-hidden="true">
+                    <img
+                      src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=256&auto=format&fit=crop"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="tcard__meta">
+                    <strong class="tcard__name">Ana Paredes</strong>
+                    <span class="tcard__role">Head of Retail · Boreal</span>
+                    <div class="tcard__stars" aria-label="5 de 5">★★★★★</div>
+                  </div>
+                </div>
+
+                <p class="tcard__quote">
+                  “Superaron expectativas: tiempos, calidad y atención al
+                  detalle.”
+                </p>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial__item tcard">
+              <div class="tcard__inner">
+                <div class="tcard__head">
+                  <figure class="tcard__avatar" aria-hidden="true">
+                    <img
+                      src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=256&auto=format&fit=crop"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="tcard__meta">
+                    <strong class="tcard__name">Ana Paredes</strong>
+                    <span class="tcard__role">Head of Retail · Boreal</span>
+                    <div class="tcard__stars" aria-label="5 de 5">★★★★★</div>
+                  </div>
+                </div>
+
+                <p class="tcard__quote">
+                  “Superaron expectativas: tiempos, calidad y atención al
+                  detalle.”
+                </p>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial__item tcard">
+              <div class="tcard__inner">
+                <div class="tcard__head">
+                  <figure class="tcard__avatar" aria-hidden="true">
+                    <img
+                      src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=256&auto=format&fit=crop"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="tcard__meta">
+                    <strong class="tcard__name">Ana Paredes</strong>
+                    <span class="tcard__role">Head of Retail · Boreal</span>
+                    <div class="tcard__stars" aria-label="5 de 5">★★★★★</div>
+                  </div>
+                </div>
+
+                <p class="tcard__quote">
+                  “Superaron expectativas: tiempos, calidad y atención al
+                  detalle.”
+                </p>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial__item tcard">
+              <div class="tcard__inner">
+                <div class="tcard__head">
+                  <figure class="tcard__avatar" aria-hidden="true">
+                    <img
+                      src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=256&auto=format&fit=crop"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="tcard__meta">
+                    <strong class="tcard__name">Ana Paredes</strong>
+                    <span class="tcard__role">Head of Retail · Boreal</span>
+                    <div class="tcard__stars" aria-label="5 de 5">★★★★★</div>
+                  </div>
+                </div>
+
+                <p class="tcard__quote">
+                  “Superaron expectativas: tiempos, calidad y atención al
+                  detalle.”
+                </p>
+              </div>
+            </blockquote>
+            <blockquote class="testimonial__item tcard">
+              <div class="tcard__inner">
+                <div class="tcard__head">
+                  <figure class="tcard__avatar" aria-hidden="true">
+                    <img
+                      src="https://images.unsplash.com/photo-1544006659-f0b21884ce1d?q=80&w=256&auto=format&fit=crop"
+                      alt=""
+                      loading="lazy"
+                      decoding="async"
+                    />
+                  </figure>
+                  <div class="tcard__meta">
+                    <strong class="tcard__name">Ana Paredes</strong>
+                    <span class="tcard__role">Head of Retail · Boreal</span>
+                    <div class="tcard__stars" aria-label="5 de 5">★★★★★</div>
+                  </div>
+                </div>
+
+                <p class="tcard__quote">
+                  “Superaron expectativas: tiempos, calidad y atención al
+                  detalle.”
+                </p>
+              </div>
+            </blockquote>
+          </div>
+          <button class="testimonial__nav next" aria-label="Siguiente">
+            ›
+          </button>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       Precios
+  ========================================== -->
+    <section id="precios" class="section">
+      <div class="container">
+        <header class="section__head">
+          <h2>Planes y precios</h2>
+          <p>Transparencia desde el inicio. Escala cuando lo necesites.</p>
+        </header>
+
+        <div class="grid pricing">
+          <article class="price">
+            <h3>Básico</h3>
+            <p class="price__amount">$199<span>/único</span></p>
+            <ul class="list-check">
+              <li>Landing 1 sección</li>
+              <li>Soporte por 7 días</li>
+              <li>Optimización básica</li>
+            </ul>
+            <button class="btn btn--ghost">Elegir</button>
+          </article>
+
+          <article class="price price--featured" aria-label="Recomendado">
+            <div class="badge">Recomendado</div>
+            <h3>Profesional</h3>
+            <p class="price__amount">$699<span>/proyecto</span></p>
+            <ul class="list-check">
+              <li>Sitio multipágina</li>
+              <li>Auditoría de rendimiento</li>
+              <li>Consultoría UX</li>
+            </ul>
+            <button class="btn btn--primary">Elegir</button>
+          </article>
+
+          <article class="price">
+            <h3>Empresa</h3>
+            <p class="price__amount">$1299<span>/proyecto</span></p>
+            <ul class="list-check">
+              <li>Integraciones avanzadas</li>
+              <li>Soporte prioritario</li>
+              <li>Entrenamiento del equipo</li>
+            </ul>
+            <button class="btn btn--ghost">Elegir</button>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       FAQ (acordeón)
+  ========================================== -->
+    <section id="faq" class="section section--alt">
+      <div class="container">
+        <header class="section__head">
+          <h2>Preguntas frecuentes</h2>
+          <p>Resolvemos dudas comunes de forma clara.</p>
+        </header>
+
+        <div class="accordion" id="faqList">
+          <details class="accordion__item">
+            <summary><span>¿Puedo cambiar la paleta de colores?</span></summary>
+            <div class="accordion__content">
+              Sí. Edita las variables en <code>:root</code> dentro de
+              <strong>estilos.css</strong> o aplica una clase de tema al
+              <code>&lt;body&gt;</code>.
+            </div>
+          </details>
+
+          <details class="accordion__item">
+            <summary><span>¿Usa librerías externas?</span></summary>
+            <div class="accordion__content">
+              No. Solo HTML, CSS y JavaScript puros para máximo control y
+              rendimiento.
+            </div>
+          </details>
+
+          <details class="accordion__item">
+            <summary><span>¿Cómo personalizo las secciones?</span></summary>
+            <div class="accordion__content">
+              Edita el contenido de cada sección en
+              <strong>inicio.html</strong> y ajusta estilos en
+              <strong>estilos.css</strong>.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================
+       Footer
+  ========================================== -->
+    <footer class="footer">
+      <div class="container footer__inner">
+        <p>
+          © <span id="year"></span> Agencia Ficticia. Todos los derechos
+          reservados.
+        </p>
+        <nav aria-label="Enlaces secundarios">
+          <a href="#" aria-label="Política de privacidad">Privacidad</a>
+          <a href="#" aria-label="Términos y condiciones">Términos</a>
+        </nav>
+      </div>
+    </footer>
+
+    <!-- Botón volver arriba -->
+    <button id="toTop" class="to-top" aria-label="Volver arriba">↑</button>
+
+    <!-- Mensaje sin JS -->
+    <noscript>
+      <div class="no-js">
+        Este sitio funciona mejor con JavaScript habilitado.
+      </div>
+    </noscript>
+
+    <script src="app.js" defer></script>
+    <script src="js/inicio.js" defer></script>
+  </body>
+</html>
