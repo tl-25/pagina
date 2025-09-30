@@ -42,66 +42,111 @@ try {
   /* noop */
 }
 
-/* ===== Scroll vertical → desplazamiento horizontal robusto ===== */
+/* ===== Scroll vertical → desplazamiento horizontal robusto (solo desktop) ===== */
 (() => {
   const section = document.getElementById("hscroll");
   const sticky = section?.querySelector(".hscroll__sticky");
   const track = section?.querySelector("#hTrack");
   if (!section || !sticky || !track) return;
 
-  let vw = window.innerWidth,
-    vh = window.innerHeight;
-  let trackW = 0,
+  const mqDesktop = window.matchMedia("(min-width: 960px)");
+
+  let vw = 0,
+    vh = 0,
+    trackW = 0,
     maxX = 0,
     maxY = 0,
     startY = 0;
+  let ro = null;
+  let enabled = false;
 
   const clamp = (n, a, b) => Math.max(a, Math.min(b, n));
 
   function measure() {
-    // Medimos de nuevo por si cambió el layout (breakpoints, fuentes, etc.)
     vw = window.innerWidth;
     vh = window.innerHeight;
-    trackW = Math.round(track.scrollWidth); // ancho real del track
-    maxX = Math.max(0, trackW - vw); // cuánto hay que mover en X
-    // Altura total que debe recorrer la sección = desplazamiento horizontal + 1 viewport
+    trackW = Math.round(track.scrollWidth);
+    maxX = Math.max(0, trackW - vw);
     maxY = Math.max(vh, maxX + vh);
     section.style.height = `${maxY}px`;
 
-    // Punto inicial (offset) de la sección en el documento
     const rect = section.getBoundingClientRect();
-    startY = window.scrollY + rect.top; // posición Y absoluta de la sección
-    // Ajusta inmediatamente el transform al estado actual del scroll
+    startY = window.scrollY + rect.top;
     onScroll();
   }
 
   function onScroll() {
     const scrollY = window.scrollY;
-    // Progreso vertical dentro de la sección
     const y = clamp(scrollY - startY, 0, maxY - vh);
     const progress = maxY > vh ? y / (maxY - vh) : 0;
     const x = -progress * maxX;
     track.style.transform = `translate3d(${x}px,0,0)`;
   }
 
-  // Observers que re-miden cuando algo cambie su tamaño
-  const ro = new ResizeObserver(() => measure());
-  ro.observe(track);
-  ro.observe(sticky);
-  window.addEventListener("resize", measure);
-  window.addEventListener("orientationchange", measure);
-  window.addEventListener("scroll", onScroll, { passive: true });
+  function enable() {
+    if (enabled) return;
+    enabled = true;
 
-  // Recalcular tras cargar fuentes/imagenes (evita “me quedé sin elementos”)
-  window.addEventListener("load", measure);
-  document.fonts?.ready?.then?.(() => measure());
-  // Por si hay imágenes internas (si las agregas después)
-  track.querySelectorAll("img").forEach((img) => {
-    if (!img.complete) img.addEventListener("load", measure, { once: true });
-  });
+    // restablece estilos desktop
+    section.style.height = "100vh";
+    sticky.style.position = "sticky";
+    sticky.style.height = "100vh";
+    sticky.style.overflow = "hidden";
+    track.style.display = "flex";
+    track.style.transform = "translate3d(0,0,0)";
 
-  // Init
-  measure();
+    // observers / listeners
+    ro = new ResizeObserver(measure);
+    ro.observe(track);
+    ro.observe(sticky);
+
+    window.addEventListener("resize", measure);
+    window.addEventListener("orientationchange", measure);
+    window.addEventListener("scroll", onScroll, { passive: true });
+
+    window.addEventListener("load", measure);
+    document.fonts?.ready?.then?.(() => measure());
+    track.querySelectorAll("img").forEach((img) => {
+      if (!img.complete) img.addEventListener("load", measure, { once: true });
+    });
+
+    measure();
+  }
+
+  function disable() {
+    if (!enabled) {
+      // aplica estilos “móvil” por si el script corre primero en mobile
+      section.style.height = "auto";
+      sticky.style.position = "static";
+      sticky.style.height = "auto";
+      sticky.style.overflow = "visible";
+      track.style.display = "block";
+      track.style.transform = "none";
+      return;
+    }
+    enabled = false;
+
+    // quita listeners/observers
+    try {
+      ro?.disconnect();
+    } catch (_) {}
+    window.removeEventListener("resize", measure);
+    window.removeEventListener("orientationchange", measure);
+    window.removeEventListener("scroll", onScroll);
+
+    // estilos móviles/flujo normal
+    section.style.height = "auto";
+    sticky.style.position = "static";
+    sticky.style.height = "auto";
+    sticky.style.overflow = "visible";
+    track.style.display = "block";
+    track.style.transform = "none";
+  }
+
+  // primera evaluación + escucha de cambios del breakpoint
+  const sync = () => (mqDesktop.matches ? enable() : disable());
+  mqDesktop.addEventListener?.("change", sync);
+  sync();
 })();
 
 // Añade .is-revealed a las .gcard cuando entren por primera vez al viewport
@@ -152,15 +197,7 @@ navLinks.forEach((link) => {
 });
 
 // Observa secciones para activar link actual
-const sections = [
-  "#inicio",
-  "#ventajas",
-  "#servicios",
-  "#portafolio",
-  "#testimonios",
-  "#precios",
-  "#faq",
-]
+const sections = ["#inicio", "#servicios", "#contacto"]
   .map((id) => document.querySelector(id))
   .filter(Boolean);
 

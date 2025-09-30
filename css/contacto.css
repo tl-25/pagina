@@ -200,12 +200,6 @@ textarea {
   transform: none;
   transition: opacity 0.5s ease, transform 0.5s ease;
 }
-@media (prefers-reduced-motion: reduce) {
-  .reveal-up {
-    opacity: 1 !important;
-    transform: none !important;
-  }
-}
 
 /* ===== Contact Title Animation — conflict-proof ===== */
 
@@ -288,15 +282,6 @@ textarea {
   }
 }
 
-/* reduce motion */
-@media (prefers-reduced-motion: reduce) {
-  .title-ink,
-  .title-ink::before,
-  .title-ink::after {
-    animation: none !important;
-    transition: none !important;
-    transform: none !important;
-    opacity: 1 !important;
-    background-position: 0 0 !important;
-  }
+#contacto {
+  margin-bottom: 13em;
 }

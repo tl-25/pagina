@@ -104,6 +104,11 @@ body.theme-light-mint {
 html:focus-within {
   scroll-behavior: smooth;
 }
+
+html {
+  scroll-behavior: smooth;
+}
+
 html,
 body {
   height: 100%;
@@ -648,14 +653,6 @@ body.theme-light-slate .brand__logo {
   color: #fff;
 }
 
-/* Prefiere menos animaciones */
-@media (prefers-reduced-motion: reduce) {
-  * {
-    animation: none !important;
-    transition: none !important;
-    scroll-behavior: auto !important;
-  }
-}
 /* Botones */
 .btn {
   display: inline-flex;
