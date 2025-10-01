@@ -358,10 +358,11 @@
   }
 }
 
-@media (max-width: 470px) {
+@media (max-width: 640px) {
   .service {
     grid-template-columns: 1fr;
   }
+
   .service h3 {
     font-size: 1.5rem;
   }
