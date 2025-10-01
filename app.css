@@ -246,8 +246,14 @@ h3 {
   --header-radius: 16px;
 }
 
-body.has-floating-header {
-  padding-top: calc(var(--header-h) + var(--header-offset) * 2);
+main {
+  padding-top: 40vh;
+  padding-bottom: 8rem;
+}
+@media (max-width: 640px) {
+  main {
+    padding-top: 8em;
+  }
 }
 
 /* Marca */
@@ -290,30 +296,19 @@ html[data-theme="dark"] .brand__logo {
   z-index: 1000;
   height: var(--header-h);
   border-radius: var(--header-radius);
-  border: 1px solid var(--border);
+  background-color: transparent;
+  /* border: 1px solid var(--border);
   background: color-mix(in oklab, var(--bg) 78%, transparent);
-  backdrop-filter: saturate(160%) blur(10px);
+  backdrop-filter: saturate(160%) blur(10px); */
 
   /* Sombra moderna */
-  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 25px rgba(0, 0, 0, 0.18),
-    0 30px 60px rgba(0, 0, 0, 0.16);
+  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 25px rgba(0, 0, 0, 0.18),
+    0 30px 60px rgba(0, 0, 0, 0.16); */
 
   /* Estado por defecto: VISIBLE (sin depender de animaciones previas) */
-  opacity: 1;
-  transform: translateY(0);
-}
-
-/* Animación propia y autocontenida: si está, se verá suave; si no, ya es visible */
-.header.animate-in {
-  opacity: 0;
-  transform: translateY(-12px);
-  animation: headerSlideIn 0.45s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-}
-@keyframes headerSlideIn {
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  /* opacity: 1; */
+  /* transform: translateY(0); */
+  transition: background, box-shadow 0.3s ease-in-out;
 }
 
 .header__inner {
@@ -327,9 +322,14 @@ html[data-theme="dark"] .brand__logo {
 
 /* Efecto al hacer scroll (tu JS ya añade .scrolled) */
 .header.scrolled {
-  background: color-mix(in oklab, var(--bg) 88%, transparent);
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.22),
-    0 40px 80px rgba(0, 0, 0, 0.2);
+  /* background: color-mix(in oklab, var(--bg) 80%, transparent); */
+  background-color: var(--bg);
+
+  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.22),
+    0 40px 80px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 25px rgba(0, 0, 0, 0.18),
+    0 30px 60px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(3px);
 }
 
 /* NAV móvil desplegable bajo el header */
@@ -404,7 +404,7 @@ html[data-theme="dark"] .brand__logo {
   flex-direction: column; /* móvil por defecto */
   gap: 6px;
 }
-.nav__list li button {
+.nav__list li svg {
   margin: auto;
 }
 
@@ -550,15 +550,15 @@ html[data-theme="dark"] .brand__logo {
    Hero
 ========================================================= */
 .hero {
-  padding: 96px 0 72px;
+  /* padding: 96px 0 72px; */
   background: radial-gradient(
       900px 500px at 20% -10%,
-      color-mix(in oklab, var(--primary) 16%, transparent),
-      transparent 60%
+      color-mix(in oklab, var(--primary) 46%, transparent),
+      transparent 80%
     ),
     radial-gradient(
-      700px 400px at 80% 0%,
-      color-mix(in oklab, var(--accent) 12%, transparent),
+      700px 800px at 80% 0%,
+      color-mix(in oklab, var(--accent) 42%, transparent),
       transparent 55%
     );
 }
@@ -699,22 +699,11 @@ html[data-theme="dark"] .brand__logo {
 /* Hero diagonal */
 .hero--diagonal {
   position: relative;
-  padding: 100px 0 90px;
+  /* padding: 100px 0 90px; */
   overflow: hidden;
   min-height: 50dvh;
 }
-.hero-diagonal__bg {
-  position: absolute;
-  inset: -10% -5% 40% -5%;
-  background: linear-gradient(
-    135deg,
-    color-mix(in oklab, var(--primary) 20%, transparent),
-    color-mix(in oklab, var(--accent) 18%, transparent)
-  );
-  transform: skewY(-6deg);
-  z-index: -1;
-  filter: saturate(1.1) contrast(1.05);
-}
+
 .hero-diagonal__grid {
   display: grid;
   gap: 36px;

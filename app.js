@@ -94,12 +94,6 @@ if (toTopBtn) {
     window.scrollTo({ top: 0, behavior: "smooth" });
   });
 }
-
-/* Cambiar logo de acuerdo al tema */
-// if (document.body.classList.contains("theme-light-slate")) {
-//   $("#brandLogo").src = "assets/imagenes/logo_black.png";
-// }
-
 /* ===== Tema claro/oscuro SOLO header ===== */
 (() => {
   const STORAGE_KEY = "ui-theme"; // 'light' | 'dark'
