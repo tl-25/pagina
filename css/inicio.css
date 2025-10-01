@@ -477,6 +477,7 @@
   box-shadow: 0 5px 13px rgba(0, 0, 0, 0.8);
   border-radius: 1em;
   box-shadow: 0 0 1em #00ff00; /* Sobmra para video del color de la animación*/
+  object-fit: cover;
 }
 
 .collage {
@@ -568,9 +569,6 @@ ul {
     grid-column: 7 / 13;
     grid-row: 6 / 11;
     transform: rotate(3deg);
-  }
-  .media__video video {
-    /* height: fit-content; */
   }
 }
 
