@@ -23,27 +23,6 @@
   justify-content: center;
   align-items: center;
 }
-.panel:last-child {
-  border-right: 0;
-}
-.panel__content {
-  text-align: center;
-  max-width: 900px;
-}
-.panel__content h2 {
-  font-size: clamp(1.8rem, 4vw, 3rem);
-  margin-bottom: 0.4rem;
-}
-.panel__content p {
-  margin-bottom: 1rem;
-}
-
-/* Opcional: en pantallas grandes, puedes mostrar 1.1 panel por “sneak peek” */
-@media (min-width: 1280px) {
-  .panel {
-    min-width: 100vw;
-  } /* déjalo en 100vw para foco total */
-}
 
 /* ============ GCARD — tarjeta “glass” con borde degradado (FIX) ============ */
 
@@ -69,10 +48,6 @@
   .gcard__inner {
     grid-template-columns: 1.1fr 0.9fr; /* desktop: texto | imagen */
     grid-template-rows: 1fr;
-  }
-}
-@media (min-width: 960px) {
-  .gcard__inner {
     padding-inline: 4em;
   }
 }
@@ -83,14 +58,11 @@
   align-content: center;
   justify-content: center;
   gap: 0.7rem;
-  text-align: left;
 }
 .gcard__title {
-  /* width: fit-content; */
   text-align: center;
   margin: 0 auto;
   text-align: center;
-
   font-size: clamp(2rem, 2.5vw, 5rem);
   line-height: 1.2;
 }
@@ -101,99 +73,11 @@
   font-size: clamp(0.98rem, 1.3vw, 1.06rem);
   max-width: 60ch;
 }
-.gcard__actions {
-  display: flex;
-  gap: 0.6rem;
-  flex-wrap: wrap;
-}
-
-/* Imagen flotante */
-.gcard__media {
-  position: relative;
-  margin: 0;
-  border-radius: calc(var(--gcard-radius) - 8px);
-  overflow: hidden;
-  background: color-mix(in oklab, var(--card) 90%, transparent);
-  border: 1px solid color-mix(in oklab, var(--border) 70%, transparent);
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.22), 0 24px 60px rgba(0, 0, 0, 0.18);
-  isolation: isolate; /* para el brillo */
-}
-.gcard__media img {
-  display: block;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  aspect-ratio: 16 / 10; /* móvil */
-  transition: transform 0.65s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
-  will-change: transform;
-  transform-origin: center;
-}
-@media (min-width: 960px) {
-  .gcard__media img {
-    aspect-ratio: 4 / 3;
-  }
-}
-
-/* Brillo diagonal */
-.gcard__media::after {
-  content: "";
-  position: absolute;
-  inset: -25% -60% -25% -60%;
-  background: linear-gradient(
-    115deg,
-    color-mix(in oklab, #fff 22%, transparent) 0%,
-    color-mix(in oklab, #fff 0%, transparent) 45%,
-    color-mix(in oklab, #fff 22%, transparent) 55%,
-    transparent 100%
-  );
-  transform: translateX(-30%) rotate(12deg);
-  opacity: 0;
-  transition: transform 0.9s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.35s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-
-/* Hover: zoom sutil + brillo */
-.gcard:hover .gcard__media img {
-  transform: scale(1.05) translateY(-1px) rotate(0.25deg);
-  filter: saturation(1.06) contrast(1.03);
-}
-.gcard:hover .gcard__media::after {
-  transform: translateX(60%) rotate(12deg);
-  opacity: 0.55;
-}
-
-/* Reveal opcional (Ken Burns) */
-.gcard.is-revealed .gcard__media img {
-  animation: gcardKen 9s ease-in-out both;
-}
-@keyframes gcardKen {
-  0% {
-    transform: scale(1);
-  }
-  100% {
-    transform: scale(1.06);
-  }
-}
 
 /* =========================================================
-   Animaciones de imagen para tarjetas (usar en .gcard__media / .card-media__media)
+    Animaciones de imagen para tarjetas 
 ========================================================= */
-
-/* ---------- 1) Pan & Zoom cinemático (hover) ---------- */
-.fx-panzoom {
-  overflow: hidden;
-}
-.fx-panzoom img {
-  transform-origin: center;
-  transition: transform 1.1s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
-}
-.fx-panzoom:hover img {
-  transform: scale(1.08) translateX(4%);
-  filter: saturate(1.05) contrast(1.03);
-}
-
-/* ---------- 2) Tilt 3D elegante (hover) ---------- */
+/* ---------- Tilt 3D elegante (hover) ---------- */
 .fx-tilt3d {
   perspective: 900px;
   transform-style: preserve-3d;
@@ -212,40 +96,6 @@
   transform: rotateX(6deg) rotateY(-6deg) scale(1.03) translateY(-2px);
   filter: saturate(1.06) contrast(1.03);
   box-shadow: 0 16px 40px rgba(0, 0, 0, 0.24), 0 36px 80px rgba(0, 0, 0, 0.22);
-}
-
-/* ---------- 3) Parallax spotlight (hover + cursor) ---------- */
-.fx-parallax {
-  position: relative;
-  overflow: hidden;
-  isolation: isolate;
-}
-.fx-parallax::after {
-  content: "";
-  position: absolute;
-  inset: -20%;
-  background: radial-gradient(
-    350px 350px at var(--mx, 50%) var(--my, 50%),
-    color-mix(in oklab, #fff 10%, transparent) 0%,
-    transparent 60%
-  );
-  opacity: 0; /* invisible hasta hover */
-  transition: opacity 0.25s ease;
-  pointer-events: none;
-  z-index: 2;
-}
-.fx-parallax:hover::after {
-  opacity: 0.5;
-}
-.fx-parallax img {
-  transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease;
-}
-.fx-parallax:hover img {
-  transform: scale(1.04); /* leve zoom mientras el halo se mueve */
-}
-
-#faq {
-  margin-bottom: 5em;
 }
 
 /* Lista con checks */
@@ -289,9 +139,7 @@
   height: auto;
   max-height: 400px;
   margin: 0 auto;
-  /* object-fit: contain; */
   border-radius: 10px;
-
   transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease,
     box-shadow 0.35s ease;
   will-change: transform;
@@ -367,64 +215,6 @@
     font-size: 1.5rem;
   }
 }
-.carousel {
-  /* Ajusta tiempos a tu gusto */
-  --hold: 3000ms; /* tiempo visible por slide */
-  --fade: 600ms; /* duración del crossfade */
-
-  position: relative;
-  width: 100%;
-  height: 100%;
-  max-height: 100%;
-}
-
-@media (min-width: 960px) {
-  .carousel {
-    max-height: 600px;
-  }
-}
-
-.carousel__track {
-  position: relative;
-  display: flex;
-  margin: 0;
-  padding: 0;
-  list-style: none;
-  height: 100%;
-}
-
-.carousel__slide {
-  position: absolute;
-  display: grid;
-  place-items: center;
-  inset: 0;
-  opacity: 0;
-  transition: opacity var(--fade) ease-in-out;
-  will-change: opacity;
-}
-
-.carousel__slide img {
-  width: 80%;
-  max-width: fit-content;
-  height: auto;
-  max-height: fit-content;
-  border-radius: 1em;
-  object-position: center;
-  top: calc(100% / 2);
-  display: block;
-  box-shadow: 0 1em 4em rgba(7, 7, 7, 0.8);
-}
-
-@media (min-width: 960px) {
-  .carousel__slide img {
-    max-height: 600px;
-  }
-}
-
-/* Slide visible */
-.carousel__slide.is-active {
-  opacity: 1;
-}
 .text-gradient-anim {
   background: linear-gradient(90deg, var(--primary) 30%, var(--accent) 60%);
   background-size: 200% 100%;
@@ -447,6 +237,14 @@
   }
 }
 
+.hero__main {
+  display: flex;
+  flex-direction: column;
+  gap: 1em;
+  justify-content: left;
+  max-width: 650px;
+}
+
 .badge {
   padding: 0.1em 1em;
   border-radius: 1em;
@@ -454,11 +252,21 @@
   margin-inline: auto;
   text-align: center;
   color: white;
-  background-color: var(--bg);
   background: var(--primary);
   box-shadow: 0 0px 15px var(--primary);
   font-size: 0.8em;
 }
+
+.hero__main .badge {
+  margin: 0;
+}
+
+.badge.secondary {
+  background: var(--accent);
+
+  box-shadow: 0 0px 15px var(--accent);
+}
+
 @media (min-width: 960px) {
   .badge {
     font-size: 1em;
@@ -591,5 +399,43 @@ ul {
     min-width: 100% !important; /* ancho natural */
     height: auto !important; /* alto según contenido */
     padding: 16px 0; /* respira un poco */
+  }
+}
+
+.hero__main h1 {
+  filter: drop-shadow(0 0 22px var(--primary));
+}
+.fizz {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.fizz img {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  animation: floating 2s infinite linear;
+  filter: drop-shadow(0 0 3em var(--accent));
+}
+
+@keyframes floating {
+  0% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-1em);
+  }
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@media (max-width: 640px) {
+  .fizz .badge {
+    text-overflow: clip;
+    overflow: hi;
   }
 }

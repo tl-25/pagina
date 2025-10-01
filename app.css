@@ -33,27 +33,7 @@
   --header-radius: 16px;
 }
 
-/* ===== Tema: Light Rose ===== */
-body.theme-light-rose {
-  --bg: #fff9fb;
-  --text: #1a1417;
-  --muted: #6d5d63;
-
-  --primary: #e11d48; /* rose 600 */
-  --accent: #7c3aed; /* violeta 600 */
-
-  --card: #ffffff;
-  --elevated: #ffffff;
-  --border: #f3e4ea;
-
-  --success: #16a34a;
-  --warning: #f59e0b;
-  --danger: #dc2626;
-
-  --shadow: 0 10px 30px rgba(26, 20, 23, 0.08);
-}
-
-/* ===== Tema: Light Slate ===== */
+/* ===== Tema: Dark ===== */
 html[data-theme="dark"] {
   /* Base */
   --bg: #0b1220;
@@ -73,26 +53,6 @@ html[data-theme="dark"] {
   --success: #22c55e;
   --warning: #f59e0b;
   --danger: #ef4444;
-}
-
-/* ===== Tema: Light Mint ===== */
-body.theme-light-mint {
-  --bg: #f7faf9; /* oklch(97% 0.01 180) */
-  --text: #0a0f14; /* oklch(18% 0.02 260) */
-  --muted: #5a6672; /* oklch(56% 0.03 250) */
-
-  --primary: #0ea5a3; /* teal mint */
-  --accent: #6d28d9; /* violet 700 */
-
-  --card: #ffffff;
-  --elevated: #ffffff;
-  --border: #d9e3e0;
-
-  --success: #16a34a;
-  --warning: #d97706;
-  --danger: #dc2626;
-
-  --shadow: 0 10px 30px rgba(7, 26, 23, 0.08);
 }
 
 /* =========================================================
@@ -164,22 +124,6 @@ h3 {
   font-size: 1.5rem;
 }
 
-/* Accesibilidad */
-.skip-link {
-  position: absolute;
-  left: -9999px;
-  top: auto;
-}
-.skip-link:focus {
-  left: 1rem;
-  top: 1rem;
-  background: #000;
-  color: #fff;
-  padding: 0.5rem 0.75rem;
-  border-radius: 8px;
-  z-index: 9999;
-}
-
 /* Los anclajes no quedan ocultos bajo el header fijo */
 [id] {
   scroll-margin-top: var(--header-h);
@@ -247,7 +191,7 @@ h3 {
 }
 
 main {
-  padding-top: 40vh;
+  padding-top: 25vh;
   padding-bottom: 8rem;
 }
 @media (max-width: 640px) {
@@ -297,17 +241,6 @@ html[data-theme="dark"] .brand__logo {
   height: var(--header-h);
   border-radius: var(--header-radius);
   background-color: transparent;
-  /* border: 1px solid var(--border);
-  background: color-mix(in oklab, var(--bg) 78%, transparent);
-  backdrop-filter: saturate(160%) blur(10px); */
-
-  /* Sombra moderna */
-  /* box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 25px rgba(0, 0, 0, 0.18),
-    0 30px 60px rgba(0, 0, 0, 0.16); */
-
-  /* Estado por defecto: VISIBLE (sin depender de animaciones previas) */
-  /* opacity: 1; */
-  /* transform: translateY(0); */
   transition: background-color, box-shadow 0.3s ease-in-out;
 }
 
@@ -322,11 +255,7 @@ html[data-theme="dark"] .brand__logo {
 
 /* Efecto al hacer scroll (tu JS ya añade .scrolled) */
 .header.scrolled {
-  /* background: color-mix(in oklab, var(--bg) 80%, transparent); */
   background-color: var(--bg);
-
-  /* box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08), 0 16px 36px rgba(0, 0, 0, 0.22),
-    0 40px 80px rgba(0, 0, 0, 0.2); */
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.06), 0 10px 25px rgba(0, 0, 0, 0.18),
     0 30px 60px rgba(0, 0, 0, 0.16);
   backdrop-filter: blur(3px);
@@ -652,15 +581,6 @@ html[data-theme="dark"] .brand__logo {
   transform: translateY(0);
 }
 
-/* No-JS aviso */
-.no-js {
-  margin: 12px;
-  padding: 10px 14px;
-  border-radius: 10px;
-  background: #2a2a2a;
-  color: #fff;
-}
-
 /* Botones */
 .btn {
   display: inline-flex;
@@ -696,22 +616,20 @@ html[data-theme="dark"] .brand__logo {
   background: transparent;
 }
 
-/* Hero diagonal */
-.hero--diagonal {
-  position: relative;
-  /* padding: 100px 0 90px; */
-  overflow: hidden;
-  min-height: 50dvh;
-}
-
 .hero-diagonal__grid {
-  display: grid;
-  gap: 36px;
+  width: 100%;
+  padding: 0 1em;
+  display: flex;
+  flex-direction: column;
+
+  justify-content: space-around;
   align-items: center;
 }
-@media (min-width: 920px) {
+@media (min-width: 640px) {
   .hero-diagonal__grid {
-    grid-template-columns: 1.1fr 0.9fr;
+    padding: 0 5em;
+    flex-direction: row;
+    margin: 0;
   }
 }
 
