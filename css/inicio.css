@@ -570,7 +570,7 @@ ul {
     transform: rotate(3deg);
   }
   .media__video video {
-    height: fit-content;
+    /* height: fit-content; */
   }
 }
 
