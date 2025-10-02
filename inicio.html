@@ -125,60 +125,60 @@
                   ></path>
                 </svg>
               </button>
-            </li>
-            <!-- ===== Menú de idioma (custom dropdown) ===== -->
-            <div class="langmenu" id="langMenu">
-              <button
-                class="langmenu__button"
-                id="langBtn"
-                type="button"
-                aria-haspopup="menu"
-                aria-expanded="false"
-                aria-controls="langMenuList"
-              >
-                <span class="langmenu__icon" aria-hidden="true">🌐</span>
-                <span class="langmenu__current" id="langCurrent">ES</span>
-                <svg
-                  class="langmenu__chev"
-                  viewBox="0 0 24 24"
-                  aria-hidden="true"
+              <!-- ===== Menú de idioma (custom dropdown) ===== -->
+              <div class="langmenu" id="langMenu">
+                <button
+                  class="langmenu__button"
+                  id="langBtn"
+                  type="button"
+                  aria-haspopup="menu"
+                  aria-expanded="false"
+                  aria-controls="langMenuList"
                 >
-                  <path d="M6 9l6 6 6-6" fill="currentColor" />
-                </svg>
-              </button>
+                  <span class="langmenu__icon" aria-hidden="true">🌐</span>
+                  <span class="langmenu__current" id="langCurrent">ES</span>
+                  <svg
+                    class="langmenu__chev"
+                    viewBox="0 0 24 24"
+                    aria-hidden="true"
+                  >
+                    <path d="M6 9l6 6 6-6" fill="currentColor" />
+                  </svg>
+                </button>
 
-              <ul
-                class="langmenu__list"
-                id="langMenuList"
-                role="menu"
-                tabindex="-1"
-              >
-                <li role="none">
-                  <button
-                    class="langmenu__item"
-                    role="menuitemradio"
-                    aria-checked="true"
-                    data-lang="es"
-                  >
-                    <span class="langmenu__flag" aria-hidden="true">🇪🇸</span>
-                    <span class="langmenu__label">Español</span>
-                    <span class="langmenu__kbd" aria-hidden="true">ES</span>
-                  </button>
-                </li>
-                <li role="none">
-                  <button
-                    class="langmenu__item"
-                    role="menuitemradio"
-                    aria-checked="false"
-                    data-lang="en"
-                  >
-                    <span class="langmenu__flag" aria-hidden="true">🇺🇸</span>
-                    <span class="langmenu__label">English</span>
-                    <span class="langmenu__kbd" aria-hidden="true">EN</span>
-                  </button>
-                </li>
-              </ul>
-            </div>
+                <ul
+                  class="langmenu__list"
+                  id="langMenuList"
+                  role="menu"
+                  tabindex="-1"
+                >
+                  <li role="none">
+                    <button
+                      class="langmenu__item"
+                      role="menuitemradio"
+                      aria-checked="true"
+                      data-lang="es"
+                    >
+                      <span class="langmenu__flag" aria-hidden="true">🇪🇸</span>
+                      <span class="langmenu__label">Español</span>
+                      <span class="langmenu__kbd" aria-hidden="true">ES</span>
+                    </button>
+                  </li>
+                  <li role="none">
+                    <button
+                      class="langmenu__item"
+                      role="menuitemradio"
+                      aria-checked="false"
+                      data-lang="en"
+                    >
+                      <span class="langmenu__flag" aria-hidden="true">🇺🇸</span>
+                      <span class="langmenu__label">English</span>
+                      <span class="langmenu__kbd" aria-hidden="true">EN</span>
+                    </button>
+                  </li>
+                </ul>
+              </div>
+            </li>
           </ul>
         </nav>
       </div>
@@ -192,7 +192,7 @@
         <section class="hero__main">
           <h1 class="text-gradient-anim">Nuvidex</h1>
           <span class="badge" data-i18n="hero.badge1"
-            >🌟 Innovación en cada dimensión. 🌟</span
+            >🌟 Innovación en cada dimensión 🌟</span
           >
           <p data-i18n="hero.description">
             En Nuvidex diseñamos plataformas personalizadas, sistemas de
@@ -261,7 +261,7 @@
                   En Nuvidex transformamos el proceso de ensamble con sistemas
                   de proyección inteligentes. Nuestro sistema guía al operador
                   en cada paso, proyectando instrucciones directamente sobre la
-                  estación de trabajo y validando el resultado en tiempo real
+                  estación de trabajo y validando el resultado en tiempo real.
                 </p>
               </div>
               <figure class="fx-tilt3d">
@@ -819,6 +819,7 @@
                   inputmode="tel"
                   autocomplete="tel"
                   placeholder="+52 55 0000 0000"
+                  required
                 />
                 <small class="error" aria-live="polite"></small>
               </div>
@@ -902,8 +903,9 @@
     <button id="toTop" class="to-top" aria-label="Volver arriba">↑</button>
 
     <script src="app.js" defer></script>
+    <script src="lang.js" defer></script>
+
     <script src="js/inicio.js" defer></script>
     <script src="js/contacto.js" defer></script>
-    <script src="lang.js" defer></script>
   </body>
 </html>

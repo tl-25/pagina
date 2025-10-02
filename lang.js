@@ -11,7 +11,7 @@
       "nav.platforms": "Plataformas",
       "nav.contact": "Contacto",
 
-      "hero.badge1": "🌟 Innovación en cada dimensión. 🌟",
+      "hero.badge1": "🌟 Innovación en cada dimensión 🌟",
       "hero.badge2":
         "Innovación visual y tecnología a la medida desde enero de 2024",
       "hero.description":
@@ -24,7 +24,7 @@
       "services.map_ind.badge":
         "✨ La innovación que eleva la productividad de la industria ✨",
       "services.map_ind.description":
-        "En Nuvidex transformamos el proceso de ensamble con sistemas de proyección inteligentes. Nuestro sistema guía al operador en cada paso, proyectando instrucciones directamente sobre la estación de trabajo y validando el resultado en tiempo real",
+        "En Nuvidex transformamos el proceso de ensamble con sistemas de proyección inteligentes. Nuestro sistema guía al operador en cada paso, proyectando instrucciones directamente sobre la estación de trabajo y validando el resultado en tiempo real.",
       "services.map_ind.subtitle":
         "Con esta tecnología, garantizamos precisión, velocidad y confiabilidad en cada operación.",
       "services.map_ind.advantage1": "Integraciones avanzadas",
@@ -288,12 +288,6 @@
       items.find((it) => it.dataset.lang === getLang()) || items[0];
     active && active.focus();
   };
-  //   const closeMenu = () => {
-  //     if (!root) return;
-  //     root.classList.remove("langmenu--open");
-  //     btn && btn.setAttribute("aria-expanded", "false");
-  //     btn && btn.focus();
-  //   };
 
   // ⬇⬇ Parche clave: no devolver foco al botón cuando cierras por click fuera
   const closeMenu = (opts = { focus: false }) => {

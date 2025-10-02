@@ -26,8 +26,30 @@
     e.preventDefault();
     status.textContent = "";
 
+    const current = getLang();
+    let message = "";
+    let statusErrorMessage = "";
+    let statusSuccessMessage = "";
+
+    if (current === "en") {
+      message = "Check this field";
+      statusErrorMessage = "Please fill the required fields";
+      statusSuccessMessage = "Message sent! We get back to you soon";
+    } else {
+      message = "Revisa este campo";
+      statusErrorMessage = "Por favor completa los campos requeridos";
+      statusSuccessMessage = "¡Mensaje enviado! Te responderemos pronto";
+    }
+
     let valid = true;
-    const required = ["nombre", "email", "asunto", "mensaje", "consent"];
+    const required = [
+      "nombre",
+      "email",
+      "asunto",
+      "mensaje",
+      "consent",
+      "telefono",
+    ];
     required.forEach((id) => {
       const el = form.querySelector("#" + id);
       if (!el) return;
@@ -39,18 +61,18 @@
       } else {
         if (!el.checkValidity()) {
           valid = false;
-          setError(el, "Revisa este campo");
+          setError(el, message);
         } else clearError(el);
       }
     });
 
     if (!valid) {
-      status.textContent = "Por favor completa los campos requeridos.";
+      status.textContent = statusErrorMessage;
       return;
     }
 
     // Simulación de envío (aquí integrarías tu backend)
-    status.textContent = "¡Mensaje enviado! Te responderemos pronto.";
+    status.textContent = statusSuccessMessage;
     form.reset();
   });
 })();
