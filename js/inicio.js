@@ -44,7 +44,7 @@ try {
 
 /* ===== Scroll vertical → desplazamiento horizontal robusto (solo desktop) ===== */
 (() => {
-  const section = document.getElementById("hscroll");
+  const section = document.getElementById("servicios");
   const sticky = section?.querySelector(".hscroll__sticky");
   const track = section?.querySelector("#hTrack");
   if (!section || !sticky || !track) return;
@@ -197,7 +197,7 @@ navLinks.forEach((link) => {
 });
 
 // Observa secciones para activar link actual
-const sections = ["#inicio", "#servicios", "#contacto"]
+const sections = ["#inicio", "#servicios", "#contacto", "#plataformas"]
   .map((id) => document.querySelector(id))
   .filter(Boolean);
 

@@ -61,9 +61,26 @@
           aria-label="Navegación principal"
         >
           <ul class="nav__list">
-            <li><a class="nav__link" href="#inicio">Inicio</a></li>
-            <li><a class="nav__link" href="#servicios">Servicios</a></li>
-            <li><a class="nav__link" href="#contacto">Contacto</a></li>
+            <li>
+              <a class="nav__link" href="#inicio" data-i18n="nav.home"
+                >Inicio</a
+              >
+            </li>
+            <li>
+              <a class="nav__link" href="#servicios" data-i18n="nav.services"
+                >Servicios</a
+              >
+            </li>
+            <li>
+              <a class="nav__link" href="#plataformas" data-i18n="nav.platforms"
+                >Plataformas</a
+              >
+            </li>
+            <li>
+              <a class="nav__link" href="#contacto" data-i18n="nav.contact"
+                >Contacto</a
+              >
+            </li>
             <li>
               <button
                 id="themeToggle"
@@ -109,6 +126,59 @@
                 </svg>
               </button>
             </li>
+            <!-- ===== Menú de idioma (custom dropdown) ===== -->
+            <div class="langmenu" id="langMenu">
+              <button
+                class="langmenu__button"
+                id="langBtn"
+                type="button"
+                aria-haspopup="menu"
+                aria-expanded="false"
+                aria-controls="langMenuList"
+              >
+                <span class="langmenu__icon" aria-hidden="true">🌐</span>
+                <span class="langmenu__current" id="langCurrent">ES</span>
+                <svg
+                  class="langmenu__chev"
+                  viewBox="0 0 24 24"
+                  aria-hidden="true"
+                >
+                  <path d="M6 9l6 6 6-6" fill="currentColor" />
+                </svg>
+              </button>
+
+              <ul
+                class="langmenu__list"
+                id="langMenuList"
+                role="menu"
+                tabindex="-1"
+              >
+                <li role="none">
+                  <button
+                    class="langmenu__item"
+                    role="menuitemradio"
+                    aria-checked="true"
+                    data-lang="es"
+                  >
+                    <span class="langmenu__flag" aria-hidden="true">🇪🇸</span>
+                    <span class="langmenu__label">Español</span>
+                    <span class="langmenu__kbd" aria-hidden="true">ES</span>
+                  </button>
+                </li>
+                <li role="none">
+                  <button
+                    class="langmenu__item"
+                    role="menuitemradio"
+                    aria-checked="false"
+                    data-lang="en"
+                  >
+                    <span class="langmenu__flag" aria-hidden="true">🇺🇸</span>
+                    <span class="langmenu__label">English</span>
+                    <span class="langmenu__kbd" aria-hidden="true">EN</span>
+                  </button>
+                </li>
+              </ul>
+            </div>
           </ul>
         </nav>
       </div>
@@ -121,8 +191,10 @@
       <div class="container hero-diagonal__grid">
         <section class="hero__main">
           <h1 class="text-gradient-anim">Nuvidex</h1>
-          <span class="badge">🌟 Innovación en cada dimensión. 🌟</span>
-          <p>
+          <span class="badge" data-i18n="hero.badge1"
+            >🌟 Innovación en cada dimensión. 🌟</span
+          >
+          <p data-i18n="hero.description">
             En Nuvidex diseñamos plataformas personalizadas, sistemas de
             proyección inteligentes y experiencias visuales interactivas que
             transforman procesos industriales y espacios creativos. Desde
@@ -139,7 +211,7 @@
               width="100px"
               height="auto"
             />
-            <span class="badge secondary">
+            <span class="badge secondary" data-i18n="hero.badge2">
               Innovación visual y tecnología a la medida desde enero de 2024
             </span>
           </div>
@@ -150,7 +222,16 @@
     <!-- =========================================
        Carousel
   ========================================== -->
-    <section id="hscroll" class="hscroll">
+    <section id="servicios" class="hscroll">
+      <div id="" class="services__title">
+        <h2 data-i18n="services.title">Servicios</h2>
+        <p data-i18n="services.description">
+          En Nuvidex ofrecemos soluciones integrales diseñadas para adaptarse a
+          las necesidades de cada cliente. Nuestro compromiso es brindar un
+          servicio de calidad, enfocado en la eficiencia, innovación y
+          resultados.
+        </p>
+      </div>
       <div
         class="hscroll__sticky"
         aria-roledescription="carrusel"
@@ -166,14 +247,17 @@
             <div class="gcard__inner">
               <!-- Texto (izquierda) -->
               <div class="gcard__text">
-                <h3 class="gcard__title text-gradient-anim">
+                <h3
+                  class="gcard__title text-gradient-anim"
+                  data-i18n="services.map_ind.title"
+                >
                   Mapping industrial
                 </h3>
-                <span class="badge"
+                <span class="badge" data-i18n="services.map_ind.badge"
                   >✨ La innovación que eleva la productividad de la industria
                   ✨
                 </span>
-                <p class="gcard__desc">
+                <p class="gcard__desc" data-i18n="services.map_ind.description">
                   En Nuvidex transformamos el proceso de ensamble con sistemas
                   de proyección inteligentes. Nuestro sistema guía al operador
                   en cada paso, proyectando instrucciones directamente sobre la
@@ -199,14 +283,23 @@
             <div class="gcard__inner">
               <!-- Texto (izquierda) -->
               <div class="gcard__text">
-                <h3 class="gcard__title text-gradient-anim">
+                <h3
+                  class="gcard__title text-gradient-anim"
+                  data-i18n="services.map_ind.subtitle"
+                >
                   Con esta tecnología, garantizamos precisión, velocidad y
                   confiabilidad en cada operación.
                 </h3>
                 <ul class="list-check">
-                  <li>Integraciones avanzadas</li>
-                  <li>Soporte prioritario</li>
-                  <li>Entrenamiento del equipo</li>
+                  <li data-i18n="services.map_ind.advantage1">
+                    Integraciones avanzadas
+                  </li>
+                  <li data-i18n="services.map_ind.advantage2">
+                    Soporte prioritario
+                  </li>
+                  <li data-i18n="services.map_ind.advantage3">
+                    Entrenamiento del equipo
+                  </li>
                 </ul>
               </div>
               <ul class="collage" role="list">
@@ -252,13 +345,16 @@
             <div class="gcard__inner">
               <!-- Texto (izquierda) -->
               <div class="gcard__text">
-                <h3 class="gcard__title text-gradient-anim">
+                <h3
+                  class="gcard__title text-gradient-anim"
+                  data-i18n="services.map_int.title"
+                >
                   Mapping interactivo
                 </h3>
-                <span class="badge"
+                <span class="badge" data-i18n="services.map_int.badge"
                   >✨ La innovación también se puede tocar 👆</span
                 >
-                <p class="gcard__desc">
+                <p class="gcard__desc" data-i18n="services.map_int.description">
                   Nuestro sistema interactivo responde a tu movimiento: no solo
                   ves la tecnología, también la sientes. Cada gesto activa la
                   experiencia, guiando acciones con precisión y fluidez. Es
@@ -286,11 +382,11 @@
     <!-- =========================================
        Servicios
   ========================================== -->
-    <section id="servicios" class="section section--alt">
+    <section id="plataformas" class="section section--alt">
       <div class="container">
         <header class="section__head">
-          <h2>Servicios</h2>
-          <p>
+          <h2 data-i18n="platforms.title">Plataformas WEB</h2>
+          <p data-i18n="platforms.description">
             Ofrecemos soluciones de software por medio de nuestras plataformas
           </p>
         </header>
@@ -298,7 +394,11 @@
         <div class="grid services">
           <!-- Plataforma proyectos -->
           <article class="service reveal-up">
-            <div class="service__title"><h3>Plataforma de proyectos</h3></div>
+            <div class="service__title">
+              <h3 data-i18n="platforms.projects.title">
+                Plataforma de proyectos
+              </h3>
+            </div>
             <div class="service__detail">
               <div>
                 <img
@@ -307,8 +407,10 @@
                   height="auto"
                 />
               </div>
-              <h4>Organice, priorice y avance con claridad</h4>
-              <p>
+              <h4 data-i18n="platforms.projects.subtitle">
+                Organice, priorice y avance con claridad
+              </h4>
+              <p data-i18n="platforms.projects.description">
                 Centralice la planeación de sus proyectos con tareas y subtareas
                 que facilitan el seguimiento diario. Visualice el estado real
                 del trabajo, anticipe cuellos de botella y mantenga a su equipo
@@ -319,7 +421,9 @@
           <!-- Plataforma trabajadores -->
           <article class="service reveal-up">
             <div class="service__title">
-              <h3>Plataforma de trabajadores</h3>
+              <h3 data-i18n="platforms.employees.title">
+                Plataforma de trabajadores
+              </h3>
             </div>
             <div class="service__detail">
               <div>
@@ -329,8 +433,10 @@
                   height="auto"
                 />
               </div>
-              <h4>Productividad del equipo, proyecto por proyecto.</h4>
-              <p>
+              <h4 data-i18n="platforms.employees.subtitle">
+                Productividad del equipo, proyecto por proyecto.
+              </h4>
+              <p data-i18n="platforms.employees.description">
                 Asigne actividades por proyecto, divídalas en subtareas y
                 supervise el progreso de cada colaborador con transparencia.
                 Equilibre cargas de trabajo y tome decisiones informadas para
@@ -340,7 +446,9 @@
           </article>
           <article class="service reveal-up">
             <div class="service__title">
-              <h3>Plataforma de gestión de producción</h3>
+              <h3 data-i18n="platforms.production.title">
+                Plataforma de gestión de producción
+              </h3>
             </div>
             <div class="service__detail">
               <div>
@@ -350,8 +458,10 @@
                   height="auto"
                 />
               </div>
-              <h4>Rendimiento de planta a simple vista</h4>
-              <p>
+              <h4 data-i18n="platforms.production.subtitle">
+                Rendimiento de planta a simple vista
+              </h4>
+              <p data-i18n="platforms.production.description">
                 Monitoree en tiempo real la cantidad de piezas producidas por
                 máquina. Identifique paros, variaciones y metas cumplidas para
                 ajustar a tiempo y asegurar la continuidad operativa.
@@ -360,7 +470,7 @@
           </article>
           <article class="service reveal-up">
             <div class="service__title">
-              <h3>Plataforma de mapping</h3>
+              <h3 data-i18n="platforms.mapping.title">Plataforma de mapping</h3>
             </div>
             <div class="service__detail">
               <div>
@@ -370,8 +480,10 @@
                   height="auto"
                 />
               </div>
-              <h4>Espacios y procesos explicados de forma visual</h4>
-              <p>
+              <h4 data-i18n="platforms.mapping.subtitle">
+                Espacios y procesos explicados de forma visual
+              </h4>
+              <p data-i18n="platforms.mapping.description">
                 Estandarice y agilice sus procesos de ensamblaje mediante
                 instrucciones proyectadas directamente sobre el área de trabajo.
                 La interfaz interactiva guía paso a paso, resalta piezas y
@@ -381,7 +493,9 @@
             </div>
           </article>
           <article class="service reveal-up">
-            <div class="service__title"><h3>Plataforma checador</h3></div>
+            <div class="service__title">
+              <h3 data-i18n="platforms.timeClock.title">Plataforma checador</h3>
+            </div>
             <div class="service__detail">
               <div>
                 <img
@@ -390,8 +504,10 @@
                   height="auto"
                 />
               </div>
-              <h4>Control de asistencia confiable y transparente</h4>
-              <p>
+              <h4 data-i18n="platforms.timeClock.subtitle">
+                Control de asistencia confiable y transparente
+              </h4>
+              <p data-i18n="platforms.timeClock.description">
                 Registre entradas, salidas, tiempos de comida y horas extra con
                 precisión. Obtenga reportes claros para nómina y administración,
                 reduciendo errores y asegurando cumplimiento interno.
@@ -408,10 +524,10 @@
     <section id="contacto" class="section contact">
       <div class="container contact__head">
         <h2 id="titulo-contacto" class="title-animated">
-          <span class="title-ink">Contactanos</span>
+          <span class="title-ink" data-i18n="contact.title">Contactanos</span>
         </h2>
 
-        <p class="reveal-up">
+        <p class="reveal-up" data-i18n="contact.description">
           Cuéntanos sobre tu proyecto o duda. Estamos listos para ayudarte.
         </p>
       </div>
@@ -435,11 +551,9 @@
               </svg>
             </div>
             <div class="c-card__body">
-              <h3>Teléfonos</h3>
+              <h3 data-i18n="contact.phoneCard">Teléfonos</h3>
               <p>
-                <a class="c-link" href="tel:+525511223344">+52 55 1122 3344</a
-                ><br />
-                <a class="c-link" href="tel:+525588776655">+52 55 8877 6655</a>
+                <a class="chip" href="tel:+522219 953988"> +52 2219 953988</a>
               </p>
             </div>
           </article>
@@ -460,10 +574,10 @@
               </svg>
             </div>
             <div class="c-card__body">
-              <h3>Correo</h3>
+              <h3 data-i18n="contact.mailCard">Correo</h3>
               <p>
-                <a class="c-link" href="mailto:hola@agenciaficticia.dev"
-                  >hola@agenciaficticia.dev</a
+                <a class="chip" href="mailto:contacto@nuvidex.com"
+                  >contacto@nuvidex.com</a
                 >
               </p>
             </div>
@@ -485,12 +599,172 @@
               </svg>
             </div>
             <div class="c-card__body">
-              <h3>Redes sociales</h3>
+              <h3 data-i18n="contact.socialCard">Redes sociales</h3>
               <div class="socials">
-                <a aria-label="Instagram" href="#" class="chip">Instagram</a>
-                <a aria-label="Dribbble" href="#" class="chip">Dribbble</a>
-                <a aria-label="X" href="#" class="chip">X</a>
-                <a aria-label="LinkedIn" href="#" class="chip">LinkedIn</a>
+                <a
+                  aria-label="Instagram"
+                  href="https://www.facebook.com/nuvidexof"
+                  class="chip"
+                >
+                  <svg
+                    fill="currentColor"
+                    width="24px"
+                    height="24px"
+                    version="1.1"
+                    id="Layer_1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    viewBox="-143 145 512 512"
+                    xml:space="preserve"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <path
+                        d="M113,145c-141.4,0-256,114.6-256,256s114.6,256,256,256s256-114.6,256-256S254.4,145,113,145z M169.5,357.6l-2.9,38.3h-39.3 v133H77.7v-133H51.2v-38.3h26.5v-25.7c0-11.3,0.3-28.8,8.5-39.7c8.7-11.5,20.6-19.3,41.1-19.3c33.4,0,47.4,4.8,47.4,4.8l-6.6,39.2 c0,0-11-3.2-21.3-3.2c-10.3,0-19.5,3.7-19.5,14v29.9H169.5z"
+                      ></path>
+                    </g>
+                  </svg>
+                  Facebook</a
+                >
+                <a
+                  aria-label="Dribbble"
+                  href="https://www.instagram.com/nuvidexof/"
+                  class="chip"
+                >
+                  <svg
+                    viewBox="0 0 32 32"
+                    width="24px"
+                    height="24px"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill=""
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <g fill="none" fill-rule="evenodd">
+                        <path d="m0 0h32v32h-32z"></path>
+                        <path
+                          d="m17.0830929.03277248c8.1190907 0 14.7619831 6.64289236 14.7619831 14.76198302v2.3064326c0 8.1190906-6.6429288 14.761983-14.7619831 14.761983h-2.3064325c-8.11909069 0-14.76198306-6.6428924-14.76198306-14.761983v-2.3064326c0-8.11909066 6.64289237-14.76198302 14.76198306-14.76198302zm-.8630324 8.0002641-.2053832-.0002641c-1.7102378 0-3.4204757.05652851-3.4204757.05652851-2.4979736 0-4.52299562 2.02501761-4.52299562 4.52298561 0 0-.05191606 1.4685349-.05624239 3.0447858l-.00028625.2060969c0 1.7648596.05652864 3.590089.05652864 3.5900891 0 2.497968 2.02502202 4.5229856 4.52299562 4.5229856 0 0 1.5990132.0565285 3.2508899.0565285 1.7648634 0 3.6466255-.0565285 3.6466255-.0565285 2.4979736 0 4.4664317-1.9684539 4.4664317-4.4664219 0 0 .0565286-1.8046833.0565286-3.5335605l-.0010281-.4057303c-.0076601-1.5511586-.0555357-3.0148084-.0555357-3.0148084 0-2.4979681-1.9684582-4.46642191-4.4664317-4.46642191 0 0-1.6282521-.05209668-3.2716213-.05626441zm-.2053831 1.43969747c1.4024317 0 3.2005639.04637875 3.2005638.04637875 2.0483524 0 3.3130573 1.2647021 3.3130573 3.31305 0 0 .0463789 1.7674322.0463789 3.1541781 0 1.4176885-.0463789 3.2469355-.0463789 3.2469355 0 2.048348-1.2647049 3.31305-3.3130573 3.31305 0 0-1.5901757.0389711-2.9699093.0454662l-.3697206.0009126c-1.3545375 0-3.0049692-.0463788-3.0049692-.0463788-2.0483172 0-3.36958592-1.321301-3.36958592-3.3695785 0 0-.04637885-1.8359078-.04637885-3.2830941 0-1.3545344.04637885-3.061491.04637885-3.061491 0-2.0483479 1.32130402-3.31305 3.36958592-3.31305 0 0 1.7416035-.04637875 3.1440353-.04637875zm-.0000353 2.46195055c-2.2632951 0-4.0980441 1.8347448-4.0980441 4.098035s1.8347489 4.098035 4.0980441 4.098035 4.0980441-1.8347448 4.0980441-4.098035c0-2.2632901-1.8347489-4.098035-4.0980441-4.098035zm0 1.4313625c1.4727754 0 2.6666784 1.1939004 2.6666784 2.6666725s-1.193903 2.6666726-2.6666784 2.6666726c-1.4727401 0-2.6666784-1.1939005-2.6666784-2.6666726s1.1939031-2.6666725 2.6666784-2.6666725zm4.2941322-2.5685935c-.5468547 0-.9902027.4455321-.9902027.9950991 0 .5495671.443348.9950639.9902027.9950639.5468546 0 .9901674-.4454968.9901674-.9950639 0-.5496023-.4433128-.9950991-.9901674-.9950991z"
+                          fill="currentColor"
+                          fill-rule="nonzero"
+                        ></path>
+                      </g>
+                    </g>
+                  </svg>
+                  Instagram</a
+                >
+                <a
+                  aria-label="LinkedIn"
+                  href="https://www.tiktok.com/@nuvidexof"
+                  class="chip"
+                >
+                  <svg
+                    width="24px"
+                    height="24px"
+                    viewBox="-5.76 -5.76 35.52 35.52"
+                    role="img"
+                    xmlns="http://www.w3.org/2000/svg"
+                    fill="var(--bg)"
+                  >
+                    <g id="SVGRepo_bgCarrier" stroke-width="0">
+                      <rect
+                        x="-5.76"
+                        y="-5.76"
+                        width="35.52"
+                        height="35.52"
+                        rx="17.76"
+                        fill="currentColor"
+                        strokewidth="0"
+                      ></rect>
+                    </g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <title>TikTok icon</title>
+                      <path
+                        d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"
+                      ></path>
+                    </g>
+                  </svg>
+                  Tiktok</a
+                >
+                <a
+                  aria-label="LinkedIn"
+                  href="https://wa.me/522219953988?text=Hola,%20quisiera%20saber%20más%20sobre..."
+                  class="chip"
+                >
+                  <svg
+                    width="24px"
+                    height="24px"
+                    viewBox="-4.8 -4.8 29.60 29.60"
+                    version="1.1"
+                    xmlns="http://www.w3.org/2000/svg"
+                    xmlns:xlink="http://www.w3.org/1999/xlink"
+                    fill="var(--bg)"
+                  >
+                    <g
+                      id="SVGRepo_bgCarrier"
+                      stroke-width="0"
+                      transform="translate(0,0), scale(1)"
+                    >
+                      <rect
+                        x="-4.8"
+                        y="-4.8"
+                        width="29.60"
+                        height="29.60"
+                        rx="14.8"
+                        fill="currentColor"
+                        strokewidth="0"
+                      ></rect>
+                    </g>
+                    <g
+                      id="SVGRepo_tracerCarrier"
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                    ></g>
+                    <g id="SVGRepo_iconCarrier">
+                      <title>whatsapp [#128]</title>
+                      <desc>Created with Sketch.</desc>
+                      <defs></defs>
+                      <g
+                        id="Page-1"
+                        stroke="none"
+                        stroke-width="1"
+                        fill="none"
+                        fill-rule="evenodd"
+                      >
+                        <g
+                          id="Dribbble-Light-Preview"
+                          transform="translate(-300.000000, -7599.000000)"
+                          fill="var(--bg)"
+                        >
+                          <g
+                            id="icons"
+                            transform="translate(56.000000, 160.000000)"
+                          >
+                            <path
+                              d="M259.821,7453.12124 C259.58,7453.80344 258.622,7454.36761 257.858,7454.53266 C257.335,7454.64369 256.653,7454.73172 254.355,7453.77943 C251.774,7452.71011 248.19,7448.90097 248.19,7446.36621 C248.19,7445.07582 248.934,7443.57337 250.235,7443.57337 C250.861,7443.57337 250.999,7443.58538 251.205,7444.07952 C251.446,7444.6617 252.034,7446.09613 252.104,7446.24317 C252.393,7446.84635 251.81,7447.19946 251.387,7447.72462 C251.252,7447.88266 251.099,7448.05372 251.27,7448.3478 C251.44,7448.63589 252.028,7449.59418 252.892,7450.36341 C254.008,7451.35771 254.913,7451.6748 255.237,7451.80984 C255.478,7451.90987 255.766,7451.88687 255.942,7451.69881 C256.165,7451.45774 256.442,7451.05762 256.724,7450.6635 C256.923,7450.38141 257.176,7450.3464 257.441,7450.44643 C257.62,7450.50845 259.895,7451.56477 259.991,7451.73382 C260.062,7451.85686 260.062,7452.43903 259.821,7453.12124 M254.002,7439 L253.997,7439 L253.997,7439 C248.484,7439 244,7443.48535 244,7449 C244,7451.18666 244.705,7453.21526 245.904,7454.86076 L244.658,7458.57687 L248.501,7457.3485 C250.082,7458.39482 251.969,7459 254.002,7459 C259.515,7459 264,7454.51465 264,7449 C264,7443.48535 259.515,7439 254.002,7439"
+                              id="whatsapp-[#128]"
+                            ></path>
+                          </g>
+                        </g>
+                      </g>
+                    </g>
+                  </svg>
+                  WhatsApp</a
+                >
               </div>
             </div>
           </article>
@@ -503,37 +777,41 @@
           novalidate
         >
           <div class="c-card__body">
-            <h3>Escríbenos</h3>
+            <h3 data-i18n="form.title">
+              ¡Encuentra la respuesta a tu desafío empresarial!
+            </h3>
 
             <div class="form__grid">
               <div class="field">
-                <label for="nombre">Nombre</label>
+                <label for="nombre" data-i18n="form.name.label">Nombre</label>
                 <input
                   id="nombre"
                   name="nombre"
                   type="text"
                   autocomplete="name"
                   required
-                  placeholder="Tu nombre"
+                  placeholder="Jhon Smith"
                 />
                 <small class="error" aria-live="polite"></small>
               </div>
 
               <div class="field">
-                <label for="email">Correo</label>
+                <label for="email" data-i18n="form.email.label">Correo</label>
                 <input
                   id="email"
                   name="email"
                   type="email"
                   autocomplete="email"
                   required
-                  placeholder="tu@correo.com"
+                  placeholder="jhon@mail.com"
                 />
                 <small class="error" aria-live="polite"></small>
               </div>
 
               <div class="field">
-                <label for="telefono">Teléfono (opcional)</label>
+                <label for="telefono" data-i18n="form.phone.label"
+                  >Teléfono</label
+                >
                 <input
                   id="telefono"
                   name="telefono"
@@ -546,26 +824,32 @@
               </div>
 
               <div class="field">
-                <label for="asunto">Asunto</label>
+                <label for="asunto" data-i18n="form.subject.label"
+                  >Asunto</label
+                >
                 <input
                   id="asunto"
                   name="asunto"
                   type="text"
                   required
                   placeholder="¿Cómo podemos ayudar?"
+                  data-i18n-attr="placeholder:form.subject.pHolder"
                 />
                 <small class="error" aria-live="polite"></small>
               </div>
             </div>
 
             <div class="field">
-              <label for="mensaje">Mensaje</label>
+              <label for="mensaje" data-i18n="form.message.label"
+                >Mensaje</label
+              >
               <textarea
                 id="mensaje"
                 name="mensaje"
                 rows="5"
                 required
                 placeholder="Escribe aquí tu mensaje"
+                data-i18n-attr="placeholder:form.message.pHolder"
               ></textarea>
               <small class="error" aria-live="polite"></small>
             </div>
@@ -573,12 +857,18 @@
             <div class="consent">
               <label class="chk">
                 <input type="checkbox" id="consent" required />
-                <span>Acepto la política de privacidad.</span>
+                <span data-i18n="form.privacy"
+                  >Acepto la política de privacidad.</span
+                >
               </label>
             </div>
 
             <div class="form__actions">
-              <button class="btn btn--primary" type="submit">
+              <button
+                class="btn btn--primary"
+                type="submit"
+                data-i18n="form.button"
+              >
                 Enviar mensaje
               </button>
               <span
@@ -597,11 +887,14 @@
   ========================================== -->
     <footer class="footer">
       <div class="container footer__inner">
-        <p>© <span id="year"></span> Nuvidex. Todos los derechos reservados.</p>
-        <nav aria-label="Enlaces secundarios">
+        <p>
+          © <span id="year"></span> Nuvidex.
+          <span data-i18n="footer.title">Todos los derechos reservados.</span>
+        </p>
+        <!-- <nav aria-label="Enlaces secundarios">
           <a href="#" aria-label="Política de privacidad">Privacidad</a>
           <a href="#" aria-label="Términos y condiciones">Términos</a>
-        </nav>
+        </nav> -->
       </div>
     </footer>
 
@@ -611,5 +904,6 @@
     <script src="app.js" defer></script>
     <script src="js/inicio.js" defer></script>
     <script src="js/contacto.js" defer></script>
+    <script src="lang.js" defer></script>
   </body>
 </html>

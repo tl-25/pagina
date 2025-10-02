@@ -418,7 +418,13 @@ ul {
   max-width: 400px;
   height: auto;
   animation: floating 2s infinite linear;
-  filter: drop-shadow(0 0 3em var(--accent));
+  filter: invert(100%) drop-shadow(0 0 3em var(--accent));
+}
+
+html[data-theme="dark"] {
+  .fizz img {
+    filter: invert(0) drop-shadow(0 0 3em var(--accent));
+  }
 }
 
 @keyframes floating {
@@ -438,4 +444,19 @@ ul {
     text-overflow: clip;
     overflow: hi;
   }
+  .services__title {
+    margin-top: 0;
+  }
+}
+
+.services__title {
+  margin-top: 2em;
+  padding: 3em 3em 0 3em;
+  text-align: center;
+}
+.services__title p {
+  margin: auto;
+  margin-top: 2em;
+
+  max-width: 800px;
 }

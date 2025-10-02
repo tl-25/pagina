@@ -455,7 +455,7 @@ html[data-theme="dark"] .brand__logo {
 
 /* Estado abierto: X */
 .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(1) {
-  transform: translateY(9px) rotate(45deg);
+  transform: translateY(10px) rotate(45deg);
 }
 .nav__toggle[aria-expanded="true"] .nav__toggle-bar:nth-child(2) {
   opacity: 0;
@@ -547,7 +547,7 @@ html[data-theme="dark"] .brand__logo {
 .footer__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   gap: 12px;
   flex-wrap: wrap;
 }
@@ -664,3 +664,136 @@ html[data-theme="dark"] .theme-toggle .icon-sun {
   text-align: center;
   margin-left: auto;
 } /* empuja a la derecha si no hay otro elemento final */
+
+/* ===== LangMenu – Dropdown personalizado =====
+   Usa tus variables: --card, --elevated, --border, --text, --muted, --radius, --accent
+================================================ */
+.langmenu {
+  position: relative;
+  z-index: 1200; /* por encima del header */
+  isolation: isolate;
+}
+
+.langmenu__button {
+  display: inline-grid;
+  grid-auto-flow: column;
+  align-items: center;
+  gap: 0.5rem;
+  height: 40px;
+  padding: 0 0.8rem;
+  border-radius: calc(var(--radius, 10px) + 6px);
+  border: 1px solid var(--border);
+  background: color-mix(in oklab, var(--card) 94%, transparent);
+  color: var(--text);
+  cursor: pointer;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+  transition: background 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.25s ease, transform 0.12s ease;
+}
+.langmenu__button:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+.langmenu__button:active {
+  transform: translateY(0);
+}
+.langmenu__button:focus-visible {
+  outline: 2px solid color-mix(in oklab, var(--accent) 70%, transparent);
+  outline-offset: 2px;
+}
+
+.langmenu__icon {
+  font-size: 1rem;
+  opacity: 0.9;
+}
+.langmenu__current {
+  font: 700 0.82rem/1 system-ui, -apple-system, "Segoe UI", Roboto, Inter, Arial;
+  letter-spacing: 0.4px;
+}
+.langmenu__chev {
+  width: 14px;
+  height: 14px;
+  opacity: 0.7;
+}
+
+/* Panel flotante */
+.langmenu__list {
+  position: absolute;
+  top: calc(100% + 8px);
+  right: 0;
+  min-width: 180px;
+  padding: 6px;
+  margin: 0;
+  list-style: none;
+  border: 1px solid var(--border);
+  border-radius: calc(var(--radius, 10px) + 8px);
+  background: color-mix(
+    in oklab,
+    var(--elevated, var(--card)) 98%,
+    transparent
+  );
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.18), 0 6px 16px rgba(0, 0, 0, 0.08);
+  display: grid;
+  gap: 4px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-6px);
+  transition: opacity 0.18s ease, transform 0.18s ease,
+    visibility 0.18s step-end;
+}
+
+.langmenu--open .langmenu__list {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  transition: opacity 0.18s ease, transform 0.18s ease, visibility 0s;
+}
+
+/* Item */
+.langmenu__item {
+  width: 100%;
+  text-align: left;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 10px;
+  border-radius: calc(var(--radius, 10px) + 4px);
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--text);
+  cursor: pointer;
+  transition: background 0.18s ease, border-color 0.18s ease,
+    transform 0.1s ease;
+}
+.langmenu__item:hover,
+.langmenu__item:focus-visible {
+  background: color-mix(in oklab, var(--card) 94%, transparent);
+  border-color: color-mix(in oklab, var(--border) 90%, transparent);
+  outline: none;
+}
+.langmenu__item[aria-checked="true"] {
+  background: color-mix(in oklab, var(--accent) 12%, var(--card));
+  border-color: color-mix(in oklab, var(--accent) 30%, var(--border));
+}
+
+.langmenu__flag {
+  width: 18px;
+  text-align: center;
+}
+.langmenu__label {
+  font: 600 0.9rem/1.15 system-ui, -apple-system, "Segoe UI", Roboto, Inter,
+    Arial;
+}
+.langmenu__kbd {
+  opacity: 0.6;
+  font: 700 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+}
+
+/* Responsive: un pelín más alto en móvil */
+@media (max-width: 959px) {
+  .langmenu__button {
+    height: 44px;
+  }
+}
