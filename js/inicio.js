@@ -286,3 +286,12 @@ if ("IntersectionObserver" in window && sections.length) {
   );
   io.observe(root);
 })();
+
+// Reveal image for industrial mapping
+
+document.querySelectorAll(".compare .slider").forEach((sl) => {
+  const root = sl.closest(".compare");
+  const set = () => root.style.setProperty("--pos", sl.value + "%");
+  sl.addEventListener("input", set);
+  sl.addEventListener("change", set);
+});

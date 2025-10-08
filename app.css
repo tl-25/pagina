@@ -241,7 +241,7 @@ html[data-theme="dark"] .brand__logo {
   height: var(--header-h);
   border-radius: var(--header-radius);
   background-color: transparent;
-  transition: background-color, box-shadow 0.3s ease-in-out;
+  transition: background-color 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
 }
 
 .header__inner {

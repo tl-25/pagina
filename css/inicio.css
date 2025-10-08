@@ -312,11 +312,36 @@ ul {
 }
 /* estilo base de las fotos */
 .collage img {
+  position: absolute;
+  inset: 0;
   width: 100%;
   height: 100%;
   object-fit: cover; /* que llenen su celda sin deformarse */
   border-radius: 12px;
   box-shadow: 0 10px 24px var(--accent), 0 0 20px var(--primary);
+  user-select: none;
+  pointer-events: none;
+}
+
+.collage span {
+  position: absolute;
+  top: -3em;
+  left: 50%;
+  transform: translate(-70%, -50%);
+}
+
+@media (max-width: 640px) {
+  .collage span {
+    width: fit-content;
+    transform: translate(-50%, -50%);
+  }
+}
+
+@media (max-width: 480px) {
+  .collage span {
+    width: 80%;
+    top: -2em;
+  }
 }
 
 /* izquierda ocupa bloque a la izquierda */
@@ -340,14 +365,18 @@ ul {
   grid-column: 3 / 9; /* centrada (columnas 4-9) */
   grid-row: 1 / 6; /* un poco más alta */
   z-index: 2; /* SOBRE las otras */
-  transform: rotate(1.5deg);
+  /* transform: rotate(1.5deg); */
   box-shadow: 0 14px 32px rgba(0, 0, 0, 0.22);
+  position: relative;
+
+  --pos: 50%;
 }
 
 /* toques de interacción opcionales */
 .foto--center:hover {
-  transform: scale(1.05) rotate(1.5deg);
+  transform: scale(1.05);
 }
+
 .foto--left:hover,
 .foto--right:hover {
   transform: translateY(-4px) rotate(var(--r, 0));
@@ -358,26 +387,34 @@ ul {
    y las secundarias se colocan abajo a los lados sin perder jerarquía */
 @media (max-width: 640px) {
   .collage {
-    width: 100%;
-    height: 70vw; /* proporcional al ancho del viewport */
-    max-height: 520px;
-    grid-template-columns: repeat(12, 1fr);
-    grid-template-rows: repeat(10, 1fr);
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto auto;
+    grid-auto-rows: auto;
+    width: 100%; /* proporcional al ancho del viewport */
+    height: auto;
+    row-gap: 2em;
+    column-gap: 0.5em;
   }
+  .collage img {
+    position: static;
+    height: auto;
+  }
+
   .foto--center {
-    grid-column: 3 /11;
-    grid-row: 1 / 7;
-    transform: rotate(1deg);
+    grid-column: 1/-1;
+    grid-row: 1;
   }
   .foto--left {
-    grid-column: 1 / 7;
-    grid-row: 6 / 11;
-    transform: rotate(-3deg);
+    grid-column: 1;
+    grid-row: 2;
+    transform: rotate(0);
+    height: auto;
   }
   .foto--right {
-    grid-column: 7 / 13;
-    grid-row: 6 / 11;
-    transform: rotate(3deg);
+    grid-column: 2;
+    grid-row: 2;
+    height: auto;
+    transform: rotate(0);
   }
 }
 
@@ -459,4 +496,185 @@ html[data-theme="dark"] {
   margin-top: 2em;
 
   max-width: 800px;
+}
+
+.compare .img--reveal {
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  transition: clip-path 0.08s linear; /* suave al mover */
+}
+
+/* Slider ocupa todo para capturar arrastre/touch */
+.compare .slider {
+  position: absolute;
+  inset: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  margin: 0;
+}
+
+/* Barra invisible (usamos sólo el thumb) */
+.compare .slider::-webkit-slider-runnable-track {
+  height: 100%;
+  background: transparent;
+}
+.compare .slider::-moz-range-track {
+  height: 100%;
+  background: transparent;
+}
+
+/* “Handle” visual independiente para mejor estilo */
+.handle {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background: linear-gradient(
+    90deg,
+    transparent calc(var(--pos) - 1px),
+    rgba(255, 255, 255, 0.9) calc(var(--pos) - 1px),
+    rgba(255, 255, 255, 0.9) calc(var(--pos) + 1px),
+    transparent calc(var(--pos) + 1px)
+  );
+}
+.handle::after {
+  content: "↔";
+  position: absolute;
+  top: 50%;
+  left: var(--pos);
+  transform: translate(-50%, -50%);
+  font: 700 16px/1 system-ui;
+  color: #111;
+  background: #fff;
+  border-radius: 999px;
+  padding: 0.4rem 0.6rem;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Thumb grande y accesible (invisible por debajo del handle) */
+.compare .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 28px;
+  height: 100%;
+  background: transparent;
+  cursor: ew-resize;
+}
+.compare .slider::-moz-range-thumb {
+  width: 28px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: ew-resize;
+}
+
+.compare {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+
+  position: relative;
+  justify-self: center;
+  /* display: grid; */
+  box-shadow: 0 10px 24px var(--accent), 0 0 20px var(--primary);
+  aspect-ratio: 4/3;
+  overflow: hidden;
+  border-radius: 1em;
+  border: none;
+
+  --pos: 50%; /* posición inicial del divisor */
+}
+
+/* Imágenes apiladas */
+.compare .img {
+  display: block;
+  width: 100%;
+  position: absolute;
+  inset: 0;
+
+  height: auto;
+  object-fit: cover;
+  user-select: none;
+  /* pointer-events: none; */
+  object-position: center;
+  /* margin: 1em; */
+  background-repeat: no-repeat;
+  border-radius: 1em;
+  border: none;
+  outline: none;
+}
+
+/* La de arriba se recorta con clip-path usando la variable */
+.compare .img--reveal {
+  clip-path: inset(0 calc(100% - var(--pos)) 0 0);
+  transition: clip-path 0.08s linear; /* suave al mover */
+}
+
+/* Slider ocupa todo para capturar arrastre/touch */
+.compare .slider {
+  position: absolute;
+  inset: 0;
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  outline: none;
+  margin: 0;
+}
+
+.compare input {
+  border: none;
+}
+.compare input:hover {
+  border: none;
+}
+
+/* Barra invisible (usamos sólo el thumb) */
+.compare .slider::-webkit-slider-runnable-track {
+  height: 100%;
+  background: transparent;
+}
+.compare .slider::-moz-range-track {
+  height: 100%;
+  background: transparent;
+}
+
+/* “Handle” visual independiente para mejor estilo */
+.handle {
+  position: absolute;
+  inset: 0;
+  /* pointer-events: none; */
+  background: linear-gradient(
+    90deg,
+    transparent calc(var(--pos) - 1px),
+    rgba(255, 255, 255, 0.9) calc(var(--pos) - 1px),
+    rgba(255, 255, 255, 0.9) calc(var(--pos) + 1px),
+    transparent calc(var(--pos) + 1px)
+  );
+}
+.handle::after {
+  content: "↔";
+  position: absolute;
+  top: 50%;
+  left: var(--pos);
+  transform: translate(-50%, -50%);
+  font-size: 2em;
+  color: #111;
+  padding: 0 0.6rem 0.4rem 0.6rem;
+}
+
+/* Thumb grande y accesible (invisible por debajo del handle) */
+.compare .slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  /* width: 28px; */
+  height: 100%;
+  background: transparent;
+  cursor: ew-resize;
+}
+.compare .slider::-moz-range-thumb {
+  width: 28px;
+  height: 100%;
+  background: transparent;
+  border: none;
+  cursor: ew-resize;
 }

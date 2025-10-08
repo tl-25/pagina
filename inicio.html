@@ -275,6 +275,7 @@
             </div>
           </article>
           <!-- mapping industrial carousel -->
+
           <article
             class="panel gcard gcard--glass"
             role="group"
@@ -303,6 +304,8 @@
                 </ul>
               </div>
               <ul class="collage" role="list">
+                <span class="badge">¡Desliza para ver el antes y después!</span>
+
                 <li class="foto--left">
                   <img
                     src="assets/imagenes/mapping/nuvi1.webp"
@@ -313,7 +316,12 @@
                     height="auto"
                   />
                 </li>
-                <li class="foto--center">
+                <li class="foto--center compare" style="--pos: 50%">
+                  <img
+                    src="assets/imagenes/mapping/sin-proyección.JPEG"
+                    alt="Antes"
+                    class="img img--base"
+                  />
                   <img
                     src="assets/imagenes/mapping/nuvi2.webp"
                     alt="Descripción 2"
@@ -321,7 +329,18 @@
                     decoding="async"
                     width="200px"
                     height="auto"
+                    alt="Después"
+                    class="img img--reveal"
                   />
+                  <input
+                    class="slider"
+                    type="range"
+                    min="0"
+                    max="100"
+                    value="50"
+                    aria-label="Comparar antes y después"
+                  />
+                  <div class="handle" aria-hidden="true"></div>
                 </li>
                 <li class="foto--right">
                   <img
